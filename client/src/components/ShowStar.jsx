@@ -27,8 +27,8 @@ const [star, setStar] = useState({})
       aria-describedby="modal-modal-description"
     >
       <Box sx={modal}>
-        <p>{title}</p>
-        <p>{content}</p>
+        {/* <p>{title}</p>
+        <p>{content}</p> */}
         <Button variant="contained" onClick={onClose}>
           Close Modal
         </Button>

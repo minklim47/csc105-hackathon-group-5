@@ -29,9 +29,15 @@ function App() {
         {/* <Route path="profile" element={}/> */}
 
         <Route exact path="/signup" element={<SignupBox />} />
+
         {/* <Route exact path="/login" element={<Login/>}/> */}
 
-        <Route exact path="/login" element={<Login />} />
+      
+
+      
+        <Route exact path="/login" element={<Login/>}/>
+
+
 
         <Route />
       </Routes>

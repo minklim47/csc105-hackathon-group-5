@@ -1,5 +1,8 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+
 import React, { useState } from "react";
+import { Box, Modal, Typography, Button, TextField } from "@mui/material";
+import "../styles/modal.css"
+
 
 import { NavLink } from "react-router-dom";
 import Axios from "axios";

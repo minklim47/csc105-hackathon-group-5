@@ -9,9 +9,7 @@ const signupBox = () => {
             aria-describedby="modal-modal-description"
         >
             <Box sx={modalStyle}>
-                <Typography sx={header}>
-                    Sign up
-                </Typography>
+                <Typography sx={header}>Sign up</Typography>
                 <Box sx={groupInput}>
                     <TextField sx={inputBox}> </TextField>
                     <TextField sx={inputBox}> </TextField>
@@ -22,12 +20,10 @@ const signupBox = () => {
                     id="modal-modal-description"
                     sx={{ mt: 2 }}
                 ></Typography>
-                <Button sx={submit}>
-                    sign up
-                </Button>
+                <Button sx={submit}>sign up</Button>
                 <Box sx={groupLogin}>
                     <Typography> Already have an account yet? </Typography>
-                    <Typography sx={login} >Log in</Typography>
+                    <Typography sx={login}>Log in</Typography>
                 </Box>
             </Box>
         </Modal>
@@ -70,21 +66,23 @@ const inputBox = {
 };
 
 const submit = {
-    color: "",
-
-}
+    backgroundColor: "black",
+    color: "white",
+    padding: "10px",
+};
 
 const login = {
-    // fontWeight: "underline",
-    lineHeight: '24px',
-    marginLeft: "5px"
-}
+    textDecoration: 'underline',
+    lineHeight: "24px",
+    marginLeft: "5px",
+};
 
 const groupLogin = {
+    marginTop: "10px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: {xs: "column", sm: "row"}
-}
+    flexDirection: { xs: "column", sm: "row" },
+};
 
 export default signupBox;

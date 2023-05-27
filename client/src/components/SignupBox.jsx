@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Modal, Typography, Button, TextField } from "@mui/material";
 
 const signupBox = () => {
+   
+
     return (
         <Modal
             open={true}
@@ -17,6 +19,7 @@ const signupBox = () => {
                     <TextField sx={inputBox}> </TextField>
                     <TextField sx={inputBox}> </TextField>
                 </Box>
+               
 
                 <Typography
                     id="modal-modal-description"

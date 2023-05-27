@@ -2,7 +2,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
-
+import "../styles/modal.css"
 const instance = Axios.create({
   withCredentials: true,
 });

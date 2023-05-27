@@ -5,7 +5,6 @@ import {
     Modal,
     Typography,
     TextField,
-    Avatar,
 } from "@mui/material";
 import "../styles/modal.css";
 
@@ -62,7 +61,7 @@ function Profile() {
                     )}
                 </label>
                 <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleChange} />
-                <label htmlFor="fileInput" >Choose File</label>
+                <label htmlFor="fileInput" style={{backgroundColor: "#ffffff", padding:"5px", marginTop:"10px"}} >Choose File</label>
 
 
                 {/* <input
@@ -244,6 +243,4 @@ const buttonStyle = {
         transition: "0.3s",
     },
 };
-
-
 export default Profile;

@@ -58,11 +58,21 @@ const groupInput = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    backgroundColor: "rgba(3, 21, 41, 0.8)",
+    borderRadius: "20px",
+    padding: "30px",
+
 };
 
 const inputBox = {
     marginTop: "10px",
-    width: "100%",
+    // width: "80%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    input: {
+        backgroundColor: 'white',
+    },
 };
 
 const submit = {
@@ -72,7 +82,7 @@ const submit = {
 };
 
 const login = {
-    textDecoration: 'underline',
+    textDecoration: "underline",
     lineHeight: "24px",
     marginLeft: "5px",
 };

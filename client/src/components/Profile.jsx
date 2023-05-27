@@ -33,16 +33,15 @@ const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  maxWidth: "90%", // Adjust the maximum width as a percentage
+  maxWidth: "90%",
   width: "500px",
-  bgcolor: "background.paper",
   borderRadius: "15px",
   boxShadow: 24,
   p: 4,
-  display:"flex",
-  justifyContent:"center",
-  alignItems:"center",
-    flexDirection:"column"
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
 };
 const image = {
     backgroundColor :"#000000",

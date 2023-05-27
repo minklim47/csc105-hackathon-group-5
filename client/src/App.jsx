@@ -11,7 +11,6 @@ import "./App.css";
 import Home from "./pages/Home";
 
 import ParticleBackground  from "./particles/ParticleBackground";
-=======
 import SignupBox from "./components/signupBox";
 
 

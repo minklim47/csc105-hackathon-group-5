@@ -37,13 +37,20 @@ app.get("/", (req, res) => {
 // const signupRoute = require('./routes/endpoint_signup')(connection);
 const alluserRoute = require('./routes/endpoint_all_user')(connection);
 const allstarRoute = require('./routes/endpoint_all_star')(connection);
+const createStarRoute = require('./routes/endpoint_create_star')(connection);
+// const editRoute = require('./routes/endpoint_edit')(connection);
+// const deleteRoute = require('./routes/endpoint_delete')(connection);
+// const createUserRoute = require('./routes/endpoint_create_user.js')(connection);
 
 
 // app.use('/login', loginRoute);
 // app.use('/signup', signupRoute);
 app.use('/alluser', alluserRoute);
 app.use('/allstar', allstarRoute);
-
+app.use('/createstar', createStarRoute);
+// app.use('/edit', editRoute);
+// app.use('/delete', deleteRoute);
+// app.use('/createuser', createUserRoute);
 
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);

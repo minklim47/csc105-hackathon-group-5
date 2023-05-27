@@ -47,7 +47,8 @@ const modalStyle = {
 const image = {
     backgroundColor :"#000000",
     borderRadius:"50%",
-    width:"50px",
+    maxWidth: "10%",
+    width:"150px",
     height:"50px",
 }
 const buttonStyle = {

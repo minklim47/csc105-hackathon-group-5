@@ -1,15 +1,15 @@
-import { Box,Stack, Button, TextField, Typography } from "@mui/material";
+
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+
 import React, { useState } from "react";
 import "../styles/modal.css";
 import Axios from "axios";
 
-
-
 const instance = Axios.create({
   withCredentials: true,
 });
-function CreateStar() {
-  const [star, setStar] = useState({type:"support"});
+function CreateStar({ open, onClose }) {
+  const [star, setStar] = useState({ type: "support" });
 
   const inputStyle = {
     // backgroundColor: "", // Set the desired background color
@@ -18,7 +18,9 @@ function CreateStar() {
     borderColor: "white", // Set the desired border color
     borderWidth: "10px", // Set the desired border width if needed
     borderRadius: "5px",
-    };
+
+  };
+
 
   const handleSubmit = () => {
     instance
@@ -31,17 +33,20 @@ function CreateStar() {
       });
   };
   return (
-    // <Modal
-    //   open={true}
-    //   aria-labelledby="modal-modal-title"
-    //   aria-describedby="modal-modal-description"
-    // >
 
+    <Modal
+      open={open}
+      onClose={onClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+   
     <Box className="modal" sx={modalStyle}>
       <div style={{ marginBottom: "30px"}}><Stack direction={"row"}>
         <Stack >
         <img src="../src/assets/star.png" style={{ width: "50px", height: "50px" ,marginBottom:"10px"}}></img>
           <label style={{ color: "#fffff", marginRight: "70px",  }}>
+
             support
             <input
               type="radio"
@@ -74,6 +79,7 @@ function CreateStar() {
           </label>
           </Stack>
           </Stack>
+
 
         </div>
        
@@ -127,13 +133,9 @@ function CreateStar() {
           }}
         />
         
-      </Box>
 
-      <div style={{ width: "70%" }}>
-        <Button sx={buttonStyle} onClick={handleSubmit}>Create Star</Button>
-      </div>
-    </Box>
-    // </Modal>
+      </Box>
+    </Modal>
   );
 }
 
@@ -183,6 +185,5 @@ const buttonStyle = {
     transition: "0.3s",
   },
 };
-
 
 export default CreateStar;

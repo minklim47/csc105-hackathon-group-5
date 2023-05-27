@@ -6,6 +6,7 @@ import moon from "../assets/moonvec.png";
 import Nav from "../components/Nav";
 import { Box, Button, useMediaQuery } from "@mui/material";
 import ShowStar from "../components/ShowStar";
+import CreateStar from "../components/CreateStar";
 import Axios from "axios";
 const instance = Axios.create({
   withCredentials: true,
@@ -14,21 +15,25 @@ const instance = Axios.create({
 function Home() {
   //   const isScreenLessThan900px = useMediaQuery("(max-width:900px)");
   const [open, setOpen] = useState(false);
+  const [openCreate, setOpenCreate] = useState(false);
   const [stars, setStars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [starId, setStarId] = useState(null);
 
   const handleClick = (starId) => {
-    // localStorage.setItem("starId", starId);
     setStarId(starId);
     handleOpen();
   };
   const handleOpen = () => {
     setOpen(true);
   };
+  const handleOpenCreate = () => {
+    setOpenCreate(true);
+  }
   //   console.log(starId)
   const handleClose = () => {
     setOpen(false);
+    setOpenCreate(false);
   };
   //   const handleClick = (starId) => {
 
@@ -69,10 +74,12 @@ function Home() {
           </div>
         ))}
       </Box>
-      {/* <Button sx={createStyle} onClick={handleOpen}>
+      <Button sx={createStyle} onClick={handleOpenCreate}>
         Create a Star
-      </Button> */}
+      </Button>
       <ShowStar starId={starId} open={open} onClose={handleClose} />
+      <CreateStar  open={openCreate} onClose={handleClose} />
+
     </div>
   );
 }

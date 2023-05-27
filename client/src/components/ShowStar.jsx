@@ -6,18 +6,21 @@ const instance = Axios.create({
   withCredentials: true,
 });
 
-function ShowStar({ open, onClose }) {
+function ShowStar({ starId,open, onClose }) {
   // const [open, setOpen] = useState(open)
-  
-// useEffect(() => {
+    const [star, setStar] = useState({})
+useEffect(() => {
+  fetchStar();
+},[])
 
-// },[])
+const fetchStar = () => {
+    instance.get("",[starId]).then((res) => {
+      console.log(res.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+}
 
-// const fetchStar = () => {
-//     instance.get("")
-// }
-
-const [star, setStar] = useState({})
   return (
     <Modal
   
@@ -27,11 +30,11 @@ const [star, setStar] = useState({})
       aria-describedby="modal-modal-description"
     >
       <Box sx={modal}>
-        {/* <p>{title}</p>
-        <p>{content}</p> */}
-        <Button variant="contained" onClick={onClose}>
+        <p>{star.title}</p>
+        <p>{content}</p>
+        {/* <Button variant="contained" onClick={onClose}>
           Close Modal
-        </Button>
+        </Button> */}
       </Box>
     </Modal>
   );

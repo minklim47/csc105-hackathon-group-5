@@ -5,18 +5,18 @@ const router = express.Router();
 
 module.exports = (connection) => {
   router.post('/', (req, res) => {
-    const { name, content, type, user_id, created_at } = req.body; // Assuming the request body contains 'name', 'content', 'type', 'user_id', and 'created_at' properties
+    const { name, content, type, user_id} = req.body; // Assuming the request body contains 'name', 'content', 'type', 'user_id', and 'created_at' properties
     
-    if (!name || !content || !type || !user_id || !created_at) {
+    if (!name || !content || !type || !user_id) {
       // If any required property is missing, return an error response
-      return res.status(400).json({ error: 'Name, content, type, user_id, and created_at are required' });
+      return res.status(400).json({ error: 'Name, content, type, and user_id are required' });
     }
 
-    const sqlInsert = "INSERT INTO stars (name, content, type, user_id, created_at) VALUES (?, ?, ?, ?, ?)";
+    const sqlInsert = "INSERT INTO stars (name, content, type, user_id) VALUES (?, ?, ?, ?)";
 
     connection.query(
       sqlInsert,
-      [name, content, type, user_id, created_at],
+      [name, content, type, user_id],
       (err, result) => {
         if (err) {
           res.json({

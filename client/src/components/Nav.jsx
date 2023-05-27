@@ -29,18 +29,14 @@ function Nav() {
             component="img"
             sx={{
              
-                width:"110px",
-                marginTop:"15px"
+                width:"90px",
+                // marginTop:"15px"
             }}
             alt="logo"
             src={logo}
           />
         </Button>
-        <Stack
-          direction="row"
-          spacing={1.5}
-          sx={{ display: { xs: "none", sm: "inherit" } }}
-        >
+  
           <Button
             component={NavLink}
             // to={`/Profile/${userId}`}
@@ -50,15 +46,14 @@ function Nav() {
           >
             Profile
           </Button>
-        </Stack>
 
         {/* ==============DRAWER=============== */}
-        <IconButton
+        {/* <IconButton
           sx={{ color: "black.main", display: { xs: "inherit", sm: "none" } }}
-        //   onClick={toggleDrawer(true)}
+          onClick={toggleDrawer(true)}
         >
-          {/* <MenuIcon /> */}
-        </IconButton>
+          <MenuIcon />
+        </IconButton> */}
       </Toolbar>
     </AppBar>
   );

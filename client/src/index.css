@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -8,9 +10,15 @@
 }
 body{
     /* background-image: url(https://cdn.discordapp.com/attachments/1111907812491145289/1111908198534885406/SENI_SECTIM_.gif); */
-    background-image:url(https://cdn.discordapp.com/attachments/1111907812491145289/1111920358921097296/image_2_1.png);
+    /* background-image:url(https://cdn.discordapp.com/attachments/1111907812491145289/1111920358921097296/image_2_1.png); */
+    /* background-image: url(https://t4.ftcdn.net/jpg/03/22/13/09/360_F_322130927_iyRVujjkN8QnD3z39MXkBq44p2qRwmzU.jpg); */
+    background-image: url("../src/assets/bg.png");
     background-size: cover;
     background-position: center;
     height: 100vh;
+}
+h1,h2,h3,h4,p{
+    font-family: 'Space Grotesk', sans-serif;
+
 }
 

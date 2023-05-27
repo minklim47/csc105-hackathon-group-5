@@ -17,8 +17,24 @@ import CreateStar from "./components/CreateStar";
 import Login from "./components/Login";
 import Profile from "./components/profile";
 
+import SpaceGrotesk from '../src/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf';
+import { ThemeProvider, createTheme } from "@mui/material";
+
+const theme = createTheme({
+  typography: {
+    // fontFamily: ["", "cursive"].join(","),
+    typography: {
+      fontFamily: [
+        'SpaceGrotesk',
+       
+      ].join(','),
+    },
+  },
+});
 function App() {
   return (
+  <ThemeProvider theme={theme}>
+
     <BrowserRouter>
       {/* <ParticleBackground/> */}
       <Routes>
@@ -45,6 +61,7 @@ function App() {
         <Route />
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

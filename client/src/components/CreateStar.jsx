@@ -1,4 +1,6 @@
+
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+
 import React, { useState } from "react";
 import "../styles/modal.css";
 import Axios from "axios";
@@ -16,7 +18,9 @@ function CreateStar({ open, onClose }) {
     borderColor: "white", // Set the desired border color
     borderWidth: "10px", // Set the desired border width if needed
     borderRadius: "5px",
+
   };
+
 
   const handleSubmit = () => {
     instance
@@ -29,15 +33,20 @@ function CreateStar({ open, onClose }) {
       });
   };
   return (
+
     <Modal
       open={open}
       onClose={onClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box className="modal" sx={modalStyle}>
-        <div style={{ marginBottom: "30px" }}>
-          <label style={{ color: "#fffff", marginRight: "70px" }}>
+   
+    <Box className="modal" sx={modalStyle}>
+      <div style={{ marginBottom: "30px"}}><Stack direction={"row"}>
+        <Stack >
+        <img src="../src/assets/star.png" style={{ width: "50px", height: "50px" ,marginBottom:"10px"}}></img>
+          <label style={{ color: "#fffff", marginRight: "70px",  }}>
+
             support
             <input
               type="radio"
@@ -51,6 +60,9 @@ function CreateStar({ open, onClose }) {
               }}
             />
           </label>
+          </Stack>
+          <Stack>
+          <img src="../src/assets/star.png" style={{ width: "50px", height: "50px" ,marginBottom:"10px"}}></img>
           <label style={{ color: "#fffff" }}>
             seek
             <input
@@ -65,70 +77,63 @@ function CreateStar({ open, onClose }) {
               }}
             />
           </label>
+          </Stack>
+          </Stack>
+
+
         </div>
+       
 
-        <Box>
-          <TextField
-            className="modal-text"
-            id="outlined-multiline-static"
-            multiline
-            rows={1}
-            placeholder="Note Title"
-            sx={{
-              width: "100%",
-              marginBottom: "20px",
-              "& .MuiOutlinedInput-root": {
-                "&  fieldset": { borderRadius: "30px", borderColor: "White" },
-              },
-            }}
-            // value={note.title}
 
-            inputProps={{
-              maxLength: 65,
-              style: inputStyle,
-            }}
-            variant="outlined"
-            onChange={(e) => {
-              setStar((prevState) => ({
-                ...prevState,
-                title: e.target.value,
-              }));
-            }}
-          />
-          <TextField
-            className={`modal-text white-border-radius`}
-            id="outlined-multiline-static"
-            multiline
-            minRows={4}
-            maxRows={12}
-            placeholder="Write your note here..."
-            sx={{
-              width: "100%",
-              mb: 2,
-              "& .MuiOutlinedInput-root": {
-                "& > fieldset": { borderRadius: "30px", borderColor: "White" },
-              },
-            }}
-            variant="outlined"
-            // value={note.content}
-            inputProps={{
-              maxLength: 65,
-              style: inputStyle,
-            }}
-            onChange={(e) => {
-              setStar((prevState) => ({
-                ...prevState,
-                content: e.target.value,
-              }));
-            }}
-          />
-        </Box>
+      <Box>
+        <TextField
+          className="modal-text"
+          id="outlined-multiline-static"
+          multiline
+          rows={1}
+          placeholder="Note Title"
+          sx={{ width: "100%", marginBottom: "20px",   "& .MuiOutlinedInput-root": {
+            "&  fieldset": { borderRadius: "30px",borderColor: "White" },
+          }, }}
+          // value={note.title}
 
-        <div style={{ width: "70%" }}>
-          <Button sx={buttonStyle} onClick={handleSubmit}>
-            Create Star
-          </Button>
-        </div>
+          inputProps={{
+            maxLength: 65,
+            style: inputStyle,
+          }}
+          variant="outlined"
+          onChange={(e) => {
+            setStar((prevState) => ({
+              ...prevState,
+              title: e.target.value,
+            }));
+          }}
+        />
+        <TextField
+          className={`modal-text white-border-radius`}
+          id="outlined-multiline-static"
+          multiline
+          minRows={4}
+          maxRows={12}
+          placeholder="Write your note here..."
+          sx={{ width: "100%", mb: 2,  "& .MuiOutlinedInput-root": {
+            "& > fieldset": { borderRadius: "30px",borderColor: "White" },
+          }, }}
+          variant="outlined"
+          // value={note.content}
+          inputProps={{
+            maxLength: 65,
+            style: inputStyle,
+          }}
+          onChange={(e) => {
+            setStar((prevState) => ({
+              ...prevState,
+              content: e.target.value,
+            }));
+          }}
+        />
+        
+
       </Box>
     </Modal>
   );

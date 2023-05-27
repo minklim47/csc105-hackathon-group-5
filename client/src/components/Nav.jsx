@@ -4,9 +4,11 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png"
 import { alpha } from '@mui/system';
 
+
 function Nav() {
+ 
   return (
-    <AppBar position="static"
+    <AppBar position="static" 
     sx={navBarStyle} elevation={0}
     //  sx={navBarStyle} 
      >
@@ -40,7 +42,7 @@ function Nav() {
           <Button
             component={NavLink}
             // to={`/Profile/${userId}`}
-            // onClick={handleProfileClick}
+            // onClick={GotoSignupBox}
             color="inherit"
             sx={navButtonStyle}
           >

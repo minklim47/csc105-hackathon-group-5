@@ -38,7 +38,7 @@ function Signup() {
     } else {
       return true;
     }
-  };
+  }; 
   return (
     // <Modal
     //   open={true}

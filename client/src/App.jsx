@@ -30,7 +30,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         {/* <Route path="profile" element={}/> */}
         <Route exact path="/signup" element={<SignupBox />} />
-        <Route exact path="/login" element={<Login/>}/>
+        {/* <Route exact path="/login" element={<Login/>}/> */}
 
         <Route />
       </Routes>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Modal, Typography, Button, TextField } from "@mui/material";
-
+import "../styles/modal.css"
 const signupBox = () => {
   return (
     <Modal
@@ -8,7 +8,7 @@ const signupBox = () => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={modalStyle}>
+      <Box className="modal" sx={modalStyle}>
         <Typography sx={header}>Sign up</Typography>
         <Box sx={groupInput}>
           <TextField sx={inputBox}> </TextField>

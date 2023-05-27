@@ -44,7 +44,11 @@ function ShowStar({ starId, open, onClose }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={modal}>
+<<<<<<< Updated upstream
         <Box sx={boxdesign1}>
+=======
+        <Box>
+>>>>>>> Stashed changes
         <p>{star.name}</p>
         </Box>
         <Box sx={boxdesign2}>

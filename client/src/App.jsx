@@ -51,8 +51,13 @@ function App() {
         <Route exact path="/signup" element={<SignupBox />} />
 
         {/* <Route exact path="/login" element={<Login/>}/> */}
+<<<<<<< Updated upstream
         <Route exact path="/history" element={<History />} />
       
+=======
+
+         
+>>>>>>> Stashed changes
 
       
         <Route exact path="/login" element={<Login/>}/>

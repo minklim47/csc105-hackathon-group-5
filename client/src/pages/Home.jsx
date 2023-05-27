@@ -35,9 +35,9 @@ function Home() {
     setOpen(false);
     setOpenCreate(false);
   };
-  //   const handleClick = (starId) => {
+    // const handleClick = (starId) => {
 
-  //   };
+    // };
   useEffect(() => {
     fetchStar();
   }, []);
@@ -53,6 +53,7 @@ function Home() {
         console.log(err);
       });
   };
+  console.log(stars);
 
   if (isLoading) {
     <div>Loading</div>;
@@ -98,6 +99,7 @@ const moonStyle = {
   zIndex: "10",
 };
 
+<<<<<<< Updated upstream
 const createStyle = {
   marginLeft: {xs: '50px' , ms: '100px' , md: '180px'},
   color: "#fffff",
@@ -111,3 +113,10 @@ const createStyle = {
   borderRadius: "35px",
   background: "rgba(255, 255, 255, 0.5)",
 };
+=======
+// const createStyle = {
+//   color: "#fffff",
+//   position: "absolute",
+//   bottom: "0",
+// };
+>>>>>>> Stashed changes

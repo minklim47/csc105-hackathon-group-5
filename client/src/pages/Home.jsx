@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Profile from "../components/profile";
 import Star from "../components/Star";
 import moon from "../assets/moonvec.png";
-// import star from "../assets/star.png";
+import "../styles/star.css";
 import Nav from "../components/Nav";
 import { Box, Button, useMediaQuery } from "@mui/material";
 import ShowStar from "../components/ShowStar";
@@ -19,6 +19,7 @@ function Home() {
   const [stars, setStars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [starId, setStarId] = useState(null);
+  const [positions, setPositions] = useState([]);
 
   const handleClick = (starId) => {
     setStarId(starId);
@@ -29,7 +30,7 @@ function Home() {
   };
   const handleOpenCreate = () => {
     setOpenCreate(true);
-  }
+  };
   //   console.log(starId)
   const handleClose = () => {
     setOpen(false);
@@ -53,6 +54,22 @@ function Home() {
         console.log(err);
       });
   };
+  useEffect(() => {
+    const generateRandomPositions = () => {
+      const randomPositions = [];
+
+      for (let i = 0; i < 10; i++) {
+        const randomTop = Math.floor(Math.random() * window.innerHeight);
+        const randomLeft = Math.floor(Math.random() * window.innerWidth);
+
+        randomPositions.push({ top: randomTop, left: randomLeft });
+      }
+
+      setPositions(randomPositions);
+    };
+
+    generateRandomPositions();
+  }, []);
 
   if (isLoading) {
     <div>Loading</div>;
@@ -60,11 +77,14 @@ function Home() {
   return (
     <div>
       <Nav />
-      <img style={moonStyle} src={moon} />
-      <Box sx={{marginTop:"90px"}}>
-        {stars.map((star) => (
+      <img className="moon" style={moonStyle} src={moon} />
+      <Box sx={{ paddingTop: "90px" }}>
+        {stars.map((star,index) => (
           <div
-            style={{ width: "40px" }}
+            style={{width:"40px",
+              top: positions[index]?.top || 0,
+              left: positions[index]?.left || 0,
+            }}
             onClick={() => {
               handleClick(star.id);
             }}
@@ -78,8 +98,7 @@ function Home() {
         Create a Star
       </Button>
       <ShowStar starId={starId} open={open} onClose={handleClose} />
-      <CreateStar  open={openCreate} onClose={handleClose} />
-
+      <CreateStar open={openCreate} onClose={handleClose} />
     </div>
   );
 }

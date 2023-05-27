@@ -27,6 +27,9 @@ function CreateStar({ open, onClose }) {
   };
 
   const handleSubmit = () => {
+    if (!formValidate){
+      return;
+    }
     console.log(star);
     instance
       .post("http://localhost:8000/createstar", { star })
@@ -39,6 +42,11 @@ function CreateStar({ open, onClose }) {
       });
 
   };
+  const formValidate = () => {
+    if (!star.name || !star.content){
+      console.log("Please fill all forms")
+    }
+  }
   return (
     <Modal
       open={open}

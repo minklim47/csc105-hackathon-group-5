@@ -42,7 +42,7 @@ function CreateStar() {
     <Box className="modal" sx={modalStyle}>
       <div style={{ marginBottom: "30px"}}>
        
-          <label style={{ color: "#fffff", marginRight: "70px" }}>
+          <label style={{ color: "#fffff", marginRight: "70px",  }}>
             support
             <input
               type="radio"
@@ -82,7 +82,7 @@ function CreateStar() {
           rows={1}
           placeholder="Note Title"
           sx={{ width: "100%", marginBottom: "20px",   "& .MuiOutlinedInput-root": {
-            "&  fieldset": { borderColor: "White" },
+            "&  fieldset": { borderRadius: "30px",borderColor: "White" },
           }, }}
           // value={note.title}
 
@@ -106,7 +106,7 @@ function CreateStar() {
           maxRows={12}
           placeholder="Write your note here..."
           sx={{ width: "100%", mb: 2,  "& .MuiOutlinedInput-root": {
-            "& > fieldset": { borderColor: "White" },
+            "& > fieldset": { borderRadius: "30px",borderColor: "White" },
           }, }}
           variant="outlined"
           // value={note.content}
@@ -157,6 +157,7 @@ const image = {
 };
 const buttonStyle = {
   textTransform: "none",
+  borderRadius: "30px",
   width: "100%",
   textAlign: "center",
   color: "#ffffff",

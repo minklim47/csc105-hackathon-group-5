@@ -43,12 +43,24 @@ function Signup() {
     //   aria-describedby="modal-modal-description"
     // >
     <Box className="modal" sx={modalStyle}>
-      <Typography>Sign up</Typography>
+      <Typography sx={ signupstyle }>Sign up</Typography>
       <Box>
         <TextField
           label="Username"
           placeholder="Enter username"
-          sx={{ width: "100%", marginBottom: "20px" }}
+          sx={{
+            width: "100%",
+            marginBottom: "20px",
+            "& .MuiInputLabel-root": {
+              color: "white", 
+            },
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": {
+                borderRadius: "30px",
+                borderColor: "White",
+              },
+            },
+          }}
           inputProps={{
             maxLength: 65,
             style: inputStyle,
@@ -64,7 +76,19 @@ function Signup() {
          <TextField
           label="Email"
           placeholder="Enter password"
-          sx={{ width: "100%", borderColor: "#fffff" }}
+          sx={{
+            width: "100%",
+            marginBottom: "20px",
+            "& .MuiInputLabel-root": {
+              color: "white", 
+            },
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": {
+                borderRadius: "30px",
+                borderColor: "White",
+              },
+            },
+          }}
           variant="outlined"
           // value={note.content}
           inputProps={{
@@ -81,7 +105,19 @@ function Signup() {
         <TextField
           label="Password"
           placeholder="Enter password"
-          sx={{ width: "100%", borderColor: "#fffff" }}
+          sx={{
+            width: "100%",
+            marginBottom: "20px",
+            "& .MuiInputLabel-root": {
+              color: "white", 
+            },
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": {
+                borderRadius: "30px",
+                borderColor: "White",
+              },
+            },
+          }}
           variant="outlined"
           // value={note.content}
           inputProps={{
@@ -98,7 +134,19 @@ function Signup() {
          <TextField
           label="Confirm password"
           placeholder="Enter confirm password"
-          sx={{ width: "100%", borderColor: "#fffff" }}
+          sx={{
+            width: "100%",
+            marginBottom: "20px",
+            "& .MuiInputLabel-root": {
+              color: "white", 
+            },
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": {
+                borderRadius: "30px",
+                borderColor: "White",
+              },
+            },
+          }}
           variant="outlined"
           // value={note.content}
           inputProps={{
@@ -115,7 +163,7 @@ function Signup() {
 
       </Box>
 
-      <div style={{ width: "70%" }}>
+      <div style={{ width: "70%",marginBottom: "20px" }}>
         <Button
           sx={buttonStyle}
           onClick={handleSubmit}
@@ -130,7 +178,7 @@ function Signup() {
           justifyContent: "space-between",
         }}
       >
-        <Typography>
+        <Typography sx={groupLogin}>
           Already have an account?
           <NavLink to="/SignIn"> Sign in</NavLink>
         </Typography>
@@ -140,19 +188,13 @@ function Signup() {
   );
 }
 
-// const image = {
-//   backgroundColor: "#FFFFFF",
-//   borderRadius: "50%",
-
-//   width: "120px",
-//   height: "120px",
-// };
 const buttonStyle = {
   textTransform: "none",
+  borderRadius: "30px", 
   width: "100%",
   textAlign: "center",
   color: "#ffffff",
-  backgroundColor: "#ff8321",
+  backgroundColor: "#38586B",
   "&:hover": {
     backgroundColor: "white.main",
     "&::after": {
@@ -204,6 +246,14 @@ const modalStyle = {
   flexDirection: "column",
 };
 
+const signupstyle = {
+  display: "flex",
+  fontWeight: "bold",
+  fontSize: "40px",
+  color: "#1871A8",
+  marginBottom: "20px"
+}
+
 // const groupInput = {
 //   display: "flex",
 //   flexDirection: "column",
@@ -231,13 +281,10 @@ const modalStyle = {
 //   marginLeft: "5px",
 // };
 
-// const groupLogin = {
-//   marginTop: "10px",
-//   display: "flex",
-//   justifyContent: "center",
-//   alignItems: "center",
-//   flexDirection: { xs: "column", sm: "row" },
-//   color: "#1871A8",
-// };
+const groupLogin = {
+  marginTop: "10px",
+  justifyContent: "center",
+  color: "#1871A8",
+};
 
 export default Signup;

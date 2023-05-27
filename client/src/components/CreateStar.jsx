@@ -148,13 +148,7 @@ const modalStyle = {
   alignItems: "center",
   flexDirection: "column",
 };
-const image = {
-  backgroundColor: "#FFFFFF",
-  borderRadius: "50%",
 
-  width: "120px",
-  height: "120px",
-};
 const buttonStyle = {
   textTransform: "none",
   borderRadius: "30px",

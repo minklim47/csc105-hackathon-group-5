@@ -14,6 +14,7 @@ import ParticleBackground  from "./particles/ParticleBackground";
 import SignupBox from "./components/signupBox";
 import CreateStart from "./components/CreateStar";
 import CreateStar from "./components/CreateStar";
+import Login from "./components/Login";
 
 
 function App() {
@@ -26,10 +27,7 @@ function App() {
         {/* <Route path="profile" element={}/> */}
         <Route exact path="/signup" element={<SignupBox />} />
         <Route />
-
-        <Route exact path="/home" element={<Home />} />
         {/* <Route path="profile" element={}/> */}
-        <Route exact path="/signup" element={<SignupBox />} />
         <Route exact path="/login" element={<Login/>}/>
 
         <Route />

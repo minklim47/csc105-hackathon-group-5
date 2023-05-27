@@ -55,7 +55,7 @@ function Nav() {
           Profile
         </Button>
       </Toolbar>
-      <Profile open={open} onClose={handleClose} />
+      {/* <Profile open={open} onClose={handleClose} /> */}
     </AppBar>
   );
 }

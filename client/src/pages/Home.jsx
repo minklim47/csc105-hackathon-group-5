@@ -2,10 +2,12 @@ import React from 'react'
 import Profile from '../components/profile'
 import Star from '../components/Star'
 import moon from '../assets/moon.png'
+import Nav from '../components/Nav'
 
 function Home() {
   return (
     <div>Home
+        <Nav/>
         <Star/>
         <Star/>
         <Star/>

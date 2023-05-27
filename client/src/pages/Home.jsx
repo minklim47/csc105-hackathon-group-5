@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Profile from "../components/profile";
 import Star from "../components/Star";
 import moon from "../assets/moonvec.png";
-// import star from "../assets/star.png";
+import "../styles/star.css";
 import Nav from "../components/Nav";
 import { Box, Button, useMediaQuery } from "@mui/material";
 import ShowStar from "../components/ShowStar";
@@ -19,6 +19,7 @@ function Home() {
   const [stars, setStars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [starId, setStarId] = useState(null);
+  const [positions, setPositions] = useState([]);
 
   const handleClick = (starId) => {
     setStarId(starId);
@@ -29,7 +30,7 @@ function Home() {
   };
   const handleOpenCreate = () => {
     setOpenCreate(true);
-  }
+  };
   //   console.log(starId)
   const handleClose = () => {
     setOpen(false);
@@ -53,7 +54,6 @@ function Home() {
         console.log(err);
       });
   };
-  console.log(stars);
 
   if (isLoading) {
     <div>Loading</div>;
@@ -61,26 +61,88 @@ function Home() {
   return (
     <div>
       <Nav />
-      <img style={moonStyle} src={moon} />
-      <Box sx={{marginTop:"90px"}}>
-        {stars.map((star) => (
+      <img className="moon" style={moonStyle} src={moon} />
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box sx={{ position:"relative",paddingTop: "90px", width:"700px",marginLeft:{sx:"0",md:"0px"}}}>
+
           <div
-            style={{ width: "40px" }}
+            id="star0"
+            style={{ display: stars[0] == null ? "none" : "" }}
             onClick={() => {
-              handleClick(star.id);
+              handleClick(stars[0].id);
             }}
-            key={star.id}
           >
             <Star />
           </div>
-        ))}
+          <div id="star1" style={{ display: stars[1] == null ? "none" : "" }}
+           onClick={() => {
+            handleClick(stars[1].id);
+          }}>
+            <Star />
+          </div>
+          <div id="star2" style={{ display: stars[2] == null ? "none" : "" }} onClick={() => {
+            handleClick(stars[2].id);
+          }}>
+            <Star />
+          </div>
+          <div id="star3" style={{ display: stars[3] == null ? "none" : "" }} onClick={() => {
+            handleClick(stars[3].id);
+          }}>
+            <Star />
+          </div>
+          <div id="star4" style={{ display: stars[4] == null ? "none" : "" }} onClick={() => {
+            handleClick(stars[4].id);
+          }}>
+            <Star />
+          </div>
+          <div id="star5" style={{ display: stars[5] == null ? "none" : "" }} onClick={() => {
+            handleClick(stars[5].id);
+          }}>
+            <Star />
+          </div>{" "}
+          <div id="star6" style={{ display: stars[6] == null ? "none" : "" }} onClick={() => {
+            handleClick(stars[6].id);
+          }}>
+            <Star />
+          </div>{" "}
+          <div id="star7" style={{ display: stars[7] == null ? "none" : "" }} onClick={() => {
+            handleClick(stars[7].id);
+          }}>
+            <Star />
+          </div>{" "}
+          <div id="star8" style={{ display: stars[8] == null ? "none" : "" }} onClick={() => {
+            handleClick(stars[8].id)}}>
+            <Star />
+          
+          </div>{" "}
+          <div id="star9" style={{ display: stars[9] == null ? "none" : "" }} onClick={() => {
+            handleClick(stars[9].id);
+          }}>
+            <Star />
+          </div>
+          {/* {stars.map((star, index) => (
+            <div
+              style={{
+                width: "40px",
+                top: positions[index]?.top || 0,
+                left: positions[index]?.left || 0,
+              }}
+              onClick={() => {
+                handleClick(star.id);
+              }}
+              key={star.id}
+            >
+              <Star />
+            </div>
+          ))} */}
+        </Box>
       </Box>
+
       <Button sx={createStyle} onClick={handleOpenCreate}>
         Create a Star
       </Button>
       <ShowStar starId={starId} open={open} onClose={handleClose} />
-      <CreateStar  open={openCreate} onClose={handleClose} />
-
+      <CreateStar open={openCreate} onClose={handleClose} />
     </div>
   );
 }

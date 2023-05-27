@@ -1,5 +1,11 @@
-
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import React, { useState } from "react";
 import "../styles/modal.css";
@@ -18,122 +24,131 @@ function CreateStar({ open, onClose }) {
     borderColor: "white", // Set the desired border color
     borderWidth: "10px", // Set the desired border width if needed
     borderRadius: "5px",
-
   };
 
-
   const handleSubmit = () => {
+    console.log(star);
     instance
       .post("http://localhost:8000/createstar", { star })
       .then((res) => {
         console.log(res);
+        onClose()
       })
       .catch((err) => {
         console.log(err);
       });
+
   };
   return (
-
     <Modal
       open={open}
       onClose={onClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-   
-    <Box className="modal" sx={modalStyle}>
-      <div style={{ marginBottom: "30px"}}><Stack direction={"row"}>
-        <Stack >
-        <img src="../src/assets/star.png" style={{ width: "50px", height: "50px" ,marginBottom:"10px"}}></img>
-          <label style={{ color: "#fffff", marginRight: "70px",  }}>
-
-            support
-            <input
-              type="radio"
-              value="support"
-              checked={star.type === "support"}
-              onChange={(e) => {
-                setStar((prevState) => ({
-                  ...prevState,
-                  content: e.target.value,
-                }));
-              }}
-            />
-          </label>
+      <Box className="modal" sx={modalStyle}>
+        <div style={{ marginBottom: "30px" }}>
+          <Stack direction={"row"}>
+            <Stack>
+              <img
+                src="../src/assets/star.png"
+                style={{ width: "50px", height: "50px", marginBottom: "10px" }}
+              ></img>
+              <label style={{ color: "#fffff", marginRight: "70px" }}>
+                support
+                <input
+                  type="radio"
+                  value="support"
+                  checked={star.type === "support"}
+                  onChange={(e) => {
+                    setStar((prevState) => ({
+                      ...prevState,
+                      type: e.target.value,
+                    }));
+                  }}
+                />
+              </label>
+            </Stack>
+            <Stack>
+              <img
+                src="../src/assets/star.png"
+                style={{ width: "50px", height: "50px", marginBottom: "10px" }}
+              ></img>
+              <label style={{ color: "#fffff" }}>
+                seek
+                <input
+                  type="radio"
+                  value="seek"
+                  checked={star.type === "seekt"}
+                  onChange={(e) => {
+                    setStar((prevState) => ({
+                      ...prevState,
+                      type: e.target.value,
+                    }));
+                  }}
+                />
+              </label>
+            </Stack>
           </Stack>
-          <Stack>
-          <img src="../src/assets/star.png" style={{ width: "50px", height: "50px" ,marginBottom:"10px"}}></img>
-          <label style={{ color: "#fffff" }}>
-            seek
-            <input
-              type="radio"
-              value="seek"
-              checked={star.type === "seekt"}
-              onChange={(e) => {
-                setStar((prevState) => ({
-                  ...prevState,
-                  content: e.target.value,
-                }));
-              }}
-            />
-          </label>
-          </Stack>
-          </Stack>
-
-
         </div>
-       
 
+        <Box>
+          <TextField
+            className="modal-text"
+            id="outlined-multiline-static"
+            multiline
+            rows={1}
+            placeholder="Note Title"
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+              "& .MuiOutlinedInput-root": {
+                "&  fieldset": { borderRadius: "30px", borderColor: "White" },
+              },
+            }}
+            // value={note.title}
 
-      <Box>
-        <TextField
-          className="modal-text"
-          id="outlined-multiline-static"
-          multiline
-          rows={1}
-          placeholder="Note Title"
-          sx={{ width: "100%", marginBottom: "20px",   "& .MuiOutlinedInput-root": {
-            "&  fieldset": { borderRadius: "30px",borderColor: "White" },
-          }, }}
-          // value={note.title}
-
-          inputProps={{
-            maxLength: 65,
-            style: inputStyle,
-          }}
-          variant="outlined"
-          onChange={(e) => {
-            setStar((prevState) => ({
-              ...prevState,
-              title: e.target.value,
-            }));
-          }}
-        />
-        <TextField
-          className={`modal-text white-border-radius`}
-          id="outlined-multiline-static"
-          multiline
-          minRows={4}
-          maxRows={12}
-          placeholder="Write your note here..."
-          sx={{ width: "100%", mb: 2,  "& .MuiOutlinedInput-root": {
-            "& > fieldset": { borderRadius: "30px",borderColor: "White" },
-          }, }}
-          variant="outlined"
-          // value={note.content}
-          inputProps={{
-            maxLength: 65,
-            style: inputStyle,
-          }}
-          onChange={(e) => {
-            setStar((prevState) => ({
-              ...prevState,
-              content: e.target.value,
-            }));
-          }}
-        />
-        
-
+            inputProps={{
+              maxLength: 65,
+              style: inputStyle,
+            }}
+            variant="outlined"
+            onChange={(e) => {
+              setStar((prevState) => ({
+                ...prevState,
+                name: e.target.value,
+              }));
+            }}
+          />
+          <TextField
+            className={`modal-text white-border-radius`}
+            id="outlined-multiline-static"
+            multiline
+            minRows={4}
+            maxRows={12}
+            placeholder="Write your note here..."
+            sx={{
+              width: "100%",
+              mb: 2,
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": { borderRadius: "30px", borderColor: "White" },
+              },
+            }}
+            variant="outlined"
+            // value={note.content}
+            inputProps={{
+              maxLength: 65,
+              style: inputStyle,
+            }}
+            onChange={(e) => {
+              setStar((prevState) => ({
+                ...prevState,
+                content: e.target.value,
+              }));
+            }}
+          />
+        </Box>
+        <Button onClick={handleSubmit}>Submit</Button>
       </Box>
     </Modal>
   );

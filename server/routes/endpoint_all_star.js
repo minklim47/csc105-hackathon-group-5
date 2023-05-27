@@ -6,6 +6,7 @@ const router = express.Router();
 module.exports = (connection) => {
   router.get("/:starId", (req, res) => {
     const starId = req.params.starId;
+    // const starId = req.query.starId;
     const sqlSelect = "SELECT * FROM group05.stars WHERE id = ?";
     connection.query(sqlSelect, [starId], (err, rows) => {
       if (err) {

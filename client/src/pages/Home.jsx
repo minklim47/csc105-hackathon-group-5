@@ -16,19 +16,21 @@ function Home() {
   const [open, setOpen] = useState(false);
   const [stars, setStars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [starId, setStarId] = useState(-1);
+  const [starId, setStarId] = useState(null);
 
-  const handleOpen = (starId) => {
-    console.log("first");
-    localStorage.setItem("starId", starId)
-    setStarId(localStorage.getItem("starId"));
+  const handleClick = (starId) => {
+    // localStorage.setItem("starId", starId);
+    setStarId(starId);
+    handleOpen();
+  };
+  const handleOpen = () => {
     setOpen(true);
   };
+  //   console.log(starId)
   const handleClose = () => {
     setOpen(false);
   };
   //   const handleClick = (starId) => {
-  //     // localStorage.setItem("starId", starId);
 
   //   };
   useEffect(() => {
@@ -36,7 +38,7 @@ function Home() {
   }, []);
   const fetchStar = async () => {
     await instance
-      .get("http://localhost:8000/allstar")
+      .get("http://localhost:8000/star")
       .then((res) => {
         console.log(res.data.data);
         setStars(res.data.data);
@@ -52,18 +54,18 @@ function Home() {
   }
   return (
     <div>
-      Home
       <Nav />
       <img style={moonStyle} src={moon} />
-      <Box>
-        {/* <img style={{ width: "40px" }} src={star} />
-        <img style={{ width: "40px" }} src={star} />
-        <img style={{ width: "40px" }} src={star} />
-        <img style={{ width: "40px" }} src={star} /> */}
-
+      <Box sx={{marginTop:"90px"}}>
         {stars.map((star) => (
-          <div onClick={()=>{handleOpen(star.id)}} key={star.id}>
-            <Star key={star.id} star={star}  />
+          <div
+            style={{ width: "40px" }}
+            onClick={() => {
+              handleClick(star.id);
+            }}
+            key={star.id}
+          >
+            <Star />
           </div>
         ))}
       </Box>

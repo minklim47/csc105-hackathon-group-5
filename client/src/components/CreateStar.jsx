@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box,Stack, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import "../styles/modal.css";
 import Axios from "axios";
@@ -18,9 +18,7 @@ function CreateStar() {
     borderColor: "white", // Set the desired border color
     borderWidth: "10px", // Set the desired border width if needed
     borderRadius: "5px",
-   
-    
-  };
+    };
 
   const handleSubmit = () => {
     instance
@@ -40,8 +38,9 @@ function CreateStar() {
     // >
 
     <Box className="modal" sx={modalStyle}>
-      <div style={{ marginBottom: "30px"}}>
-       
+      <div style={{ marginBottom: "30px"}}><Stack direction={"row"}>
+        <Stack >
+        <img src="../src/assets/star.png" style={{ width: "50px", height: "50px" ,marginBottom:"10px"}}></img>
           <label style={{ color: "#fffff", marginRight: "70px",  }}>
             support
             <input
@@ -56,6 +55,9 @@ function CreateStar() {
               }}
             />
           </label>
+          </Stack>
+          <Stack>
+          <img src="../src/assets/star.png" style={{ width: "50px", height: "50px" ,marginBottom:"10px"}}></img>
           <label style={{ color: "#fffff" }}>
             seek
             <input
@@ -70,8 +72,11 @@ function CreateStar() {
               }}
             />
           </label>
-        </div>
+          </Stack>
+          </Stack>
 
+        </div>
+       
 
 
       <Box>

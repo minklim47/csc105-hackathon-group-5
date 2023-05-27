@@ -61,7 +61,9 @@ function Profile() {
                         </>
                     )}
                 </label>
-                <input type="file" style={image} onChange={handleChange}></input>
+                <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleChange} />
+                <label htmlFor="fileInput" >Choose File</label>
+
 
                 {/* <input
                     type="file"
@@ -242,5 +244,6 @@ const buttonStyle = {
         transition: "0.3s",
     },
 };
+
 
 export default Profile;

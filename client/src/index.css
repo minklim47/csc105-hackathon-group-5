@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap');
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   list-style-type: none;
-  font-family: "Roboto", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
 }
 body{
     /* background-image: url(https://cdn.discordapp.com/attachments/1111907812491145289/1111908198534885406/SENI_SECTIM_.gif); */
@@ -16,9 +15,5 @@ body{
     background-size: cover;
     background-position: center;
     height: 100vh;
-}
-h1,h2,h3,h4,p{
-    font-family: 'Space Grotesk', sans-serif;
-
 }
 

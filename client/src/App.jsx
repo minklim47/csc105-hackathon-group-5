@@ -16,6 +16,7 @@ import CreateStart from "./components/CreateStar";
 import CreateStar from "./components/CreateStar";
 import Login from "./components/Login";
 import Profile from "./components/profile";
+import History from "./components/History";
 
 import SpaceGrotesk from '../src/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf';
 import { ThemeProvider, createTheme } from "@mui/material";
@@ -50,7 +51,7 @@ function App() {
         <Route exact path="/signup" element={<SignupBox />} />
 
         {/* <Route exact path="/login" element={<Login/>}/> */}
-
+        <Route exact path="/history" element={<History />} />
       
 
       

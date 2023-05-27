@@ -99,7 +99,15 @@ const moonStyle = {
 };
 
 const createStyle = {
+  marginLeft: {xs: '50px' , ms: '100px' , md: '180px'},
   color: "#fffff",
   position: "absolute",
-  bottom: "0",
+  bottom: "50px",
+  width: { xs: '300px' ,ms: '400px' , md: '580px'},
+  height: "80px",
+  bgcolor: "white",
+  fontSize: "20px",
+  fontWeight: "bold",
+  borderRadius: "35px",
+  background: "rgba(255, 255, 255, 0.5)",
 };

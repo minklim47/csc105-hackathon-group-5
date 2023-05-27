@@ -1,30 +1,29 @@
 import React from "react";
 import { Box, Button, Modal, Typography } from "@mui/material";
+import "../styles/modal.css";
 
 function Profile() {
   return (
-    <Modal
-      open={true}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={modalStyle}>
-      <div style={image}>
+    // <Modal
+    //   open={true}
+    //   aria-labelledby="modal-modal-title"
+    //   aria-describedby="modal-modal-description"
+    // >
+    <Box className="modal-profile" sx={modalStyle}>
+      <div style={image}></div>
+      <Typography className="modal-text" >
+        username: minklim
+      </Typography>
+      <Typography className="modal-text" >
+        email: minklim47@gmail.com
+      </Typography>
+        <div style={{width:"70%"}}>
+        <Button sx={buttonStyle}>History</Button>
+      <Button sx={buttonStyle}>Log out</Button>
         </div>
-        <Typography variant="h6" component="h2">
-          Text in a modal
-        </Typography>
-        
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
-
-        <Button sx={buttonStyle}>
-            History
-        </Button>
-        <Button sx={buttonStyle}>Log out</Button>
-      </Box>
-    </Modal>
+    
+    </Box>
+    // </Modal>
   );
 }
 
@@ -44,15 +43,16 @@ const modalStyle = {
   flexDirection: "column",
 };
 const image = {
-    backgroundColor :"#000000",
-    borderRadius:"50%",
-    maxWidth: "10%",
-    width:"150px",
-    height:"50px",
-}
+  backgroundColor: "#FFFFFF",
+  borderRadius: "50%",
+
+  width: "120px",
+  height: "120px",
+};
 const buttonStyle = {
-    textTransform:"none",
-    width:"70%"
-}
+  textTransform: "none",
+  width: "100%",
+  textAlign:"center"
+};
 
 export default Profile;

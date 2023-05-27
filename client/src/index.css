@@ -7,7 +7,8 @@
   font-family: "Roboto", sans-serif;
 }
 body{
-    background-image: url(https://cdn.discordapp.com/attachments/1111907812491145289/1111908198534885406/SENI_SECTIM_.gif);
+    /* background-image: url(https://cdn.discordapp.com/attachments/1111907812491145289/1111908198534885406/SENI_SECTIM_.gif); */
+    background-image:url(https://cdn.discordapp.com/attachments/1111907812491145289/1111920358921097296/image_2_1.png);
     background-size: cover;
     background-position: center;
     height: 100vh;

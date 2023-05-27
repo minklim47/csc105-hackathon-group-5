@@ -42,12 +42,24 @@ function Login() {
     //   aria-describedby="modal-modal-description"
     // >
     <Box className="modal" sx={modalStyle}>
-      <Typography>Login</Typography>
+      <Typography sx={ loginstyle }>Login</Typography>
       <Box>
         <TextField
           label="username"
           placeholder="Enter username"
-          sx={{ width: "100%", marginBottom: "20px" }}
+          sx={{
+            width: "100%",
+            marginBottom: "20px",
+            "& .MuiInputLabel-root": {
+              color: "white", 
+            },
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": {
+                borderRadius: "30px",
+                borderColor: "White",
+              },
+            },
+          }}
           inputProps={{
             maxLength: 65,
             style: inputStyle,
@@ -63,7 +75,19 @@ function Login() {
         <TextField
           label="password"
           placeholder="Enter password"
-          sx={{ width: "100%", borderColor: "#fffff" }}
+          sx={{
+            width: "100%",
+            marginBottom: "20px",
+            "& .MuiInputLabel-root": {
+              color: "white", 
+            },
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": {
+                borderRadius: "30px",
+                borderColor: "White",
+              },
+            },
+          }}
           variant="outlined"
           // value={note.content}
           inputProps={{
@@ -79,7 +103,7 @@ function Login() {
         />
       </Box>
 
-      <div style={{ width: "70%" }}>
+      <div style={{ width: "70%", marginBottom: "20px" }}>
         <Button
           sx={buttonStyle}
           onClick={handleSubmit}
@@ -97,7 +121,7 @@ function Login() {
         <Typography>
           <NavLink to="/ForgotPassword">Forgot password?</NavLink>
         </Typography>
-        <Typography>
+        <Typography sx={groupSignup}>
           Don't have an account?
           <NavLink to="/SignUp"> Sign up</NavLink>
         </Typography>
@@ -108,6 +132,19 @@ function Login() {
 }
 
 export default Login;
+
+const groupSignup = {
+   color: "#1871A8",
+}
+
+
+const loginstyle = {
+  display: "flex",
+  fontWeight: "bold",
+  fontSize: "40px",
+  color: "#1871A8",
+  marginBottom: "20px"
+}
 
 const modalStyle = {
   position: "absolute",
@@ -125,19 +162,14 @@ const modalStyle = {
   alignItems: "center",
   flexDirection: "column",
 };
-const image = {
-  backgroundColor: "#FFFFFF",
-  borderRadius: "50%",
 
-  width: "120px",
-  height: "120px",
-};
 const buttonStyle = {
   textTransform: "none",
+  borderRadius: "30px", 
   width: "100%",
   textAlign: "center",
   color: "#ffffff",
-  backgroundColor: "#ff8321",
+  backgroundColor: "#38586B",
   "&:hover": {
     backgroundColor: "white.main",
     "&::after": {
@@ -159,4 +191,5 @@ const buttonStyle = {
     bottom: "7px",
     transition: "0.3s",
   },
-};
+
+}

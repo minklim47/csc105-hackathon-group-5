@@ -4,7 +4,6 @@ const mysql = require("mysql2");
 const router = express.Router();
 
 module.exports = (connection) => {
-
   //Get Specific star
   router.get("/:starId", (req, res) => {
     const starId = req.params.starId;
@@ -29,7 +28,7 @@ module.exports = (connection) => {
 
   //Get all star
   router.get("/", (req, res) => {
-    const sqlSelect = "SELECT * FROM group05.stars";
+    const sqlSelect = "SELECT * FROM group05.stars ORDER BY RAND() LIMIT 10";
     connection.query(sqlSelect, (err, rows) => {
       if (err) {
         res.json({
@@ -61,7 +60,9 @@ module.exports = (connection) => {
         res.status(500).json({ success: false, error: err.message });
       } else {
         console.log("Comment added successfully");
-        res.status(200).json({ success: true, message: "Comment added successfully" });
+        res
+          .status(200)
+          .json({ success: true, message: "Comment added successfully" });
       }
     });
   });

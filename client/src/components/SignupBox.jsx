@@ -32,7 +32,8 @@ function Signup() {
       .post("http://localhost:8000/signup", {username:username,email:email,password:password})
       .then((res) => {
         console.log(res.data);
-        if (res.data.data.success == true){
+        if (res.data.success == true){
+          localStorage.setItem("userId",res.data.userId)
           navigate("/Home")
         }
       })

@@ -15,9 +15,9 @@ function Profile() {
                 <img
                     src={"../src/assets/astronaut.png"}
                     alt="dummy"
-                    width="300vw"
-                    height="300vw"
-                    sx={image}
+                    // width="300vw"
+                    // height="300vw"
+                    style={image}
                 />
                 <Typography sx={text1}>username: minklim</Typography>
                 <Typography sx={text2}>email: minklim47@gmail.com</Typography>
@@ -154,6 +154,10 @@ const modalStyle = {
     flexDirection: "column",
 };
 const image = {
+    maxWidth: "300px",
+    maxHeight: "300px",
+    height: "60%",
+    width: "60%",
 
 };
 const buttonStyle = {

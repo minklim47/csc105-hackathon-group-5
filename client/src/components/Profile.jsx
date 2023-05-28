@@ -34,88 +34,9 @@ function Profile() {
         });
     };
 
-    // const [user, setUser] = useState({});
     return (
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of e6781c7 (Merge branch 'main' into frontend)
-        // <Modal
-        //   open={true}
-        //   aria-labelledby="modal-modal-title"
-        //   aria-describedby="modal-modal-description"
-        // >
-        <Box className="modal" sx={modalStyle}>
-<<<<<<< HEAD
-
-                
-               
-
-=======
->>>>>>> parent of e6781c7 (Merge branch 'main' into frontend)
-                <label htmlFor="upload-button">
-                    {image.preview ? (
-                        <img
-                            src={image.preview}
-                            alt="dummy"
-                            width="300"
-                            height="300"
-                        />
-                    ) : (
-                        <>
-                            <span className="fa-stack fa-2x mt-3 mb-2">
-                                {/* <i className="fas fa-circle fa-stack-2x" /> */}
-                                {/* <i className="fas fa-store fa-stack-1x fa-inverse" /> */}
-                            </span>
-                            {/* <h5 className="text-center">Upload your photo</h5> */}
-                        </>
-                    )}
-                </label>
-                <input type="file" id="fileInput" style={{ display: "none" }} onChange={handleChange} />
-                <label htmlFor="fileInput" style={{backgroundColor: "#ffffff", padding:"5px", marginTop:"10px"}} >Choose File</label>
-<<<<<<< HEAD
-
-
-
-                {/* <input
-                    type="file"
-                    id="upload-button"
-                    onChange={handleChange}
-                /> */}
-                {/* <br /> */}
-                {/* <button onClick={handleUpload}>Upload</button> */}
-            <Typography sx={text1}>username: minklim</Typography>
-            <Typography sx={text2}>email: minklim47@gmail.com</Typography>
-            <Typography sx={text3}>Change password</Typography>
-            <box>
-                <TextField
-                    label="Old Password"
-                    placeholder="Enter password"
-                    sx={{
-                        width: "100%",
-                        marginBottom: "20px",
-                        "& .MuiInputLabel-root": {
-                            color: "white",
-                        },
-                        "& .MuiOutlinedInput-root": {
-                            "& > fieldset": {
-                                borderRadius: "30px",
-                                borderColor: "White",
-                            },
-                        },
-                    }}
-                    variant="outlined"
-                    // value={note.content}
-                    inputProps={{
-                        maxLength: 65,
-                    }}
-                    onChange={(e) => {
-                        setUser((prevState) => ({
-                            ...prevState,
-                            password: e.target.value,
-                        }));
-                    }}
-
+        
         <Modal
             open={true}
             aria-labelledby="modal-modal-title"
@@ -219,105 +140,7 @@ function Profile() {
                         }}
                     />
                 </box>
-=======
->>>>>>> parent of e6781c7 (Merge branch 'main' into frontend)
 
-
-                {/* <input
-                    type="file"
-                    id="upload-button"
-                    onChange={handleChange}
-                /> */}
-                {/* <br /> */}
-                {/* <button onClick={handleUpload}>Upload</button> */}
-            <Typography sx={text1}>username: minklim</Typography>
-            <Typography sx={text2}>email: minklim47@gmail.com</Typography>
-            <Typography sx={text3}>Change password</Typography>
-            <box>
-                <TextField
-                    label="Old Password"
-                    placeholder="Enter password"
-                    sx={{
-                        width: "100%",
-                        marginBottom: "20px",
-                        "& .MuiInputLabel-root": {
-                            color: "white",
-                        },
-                        "& .MuiOutlinedInput-root": {
-                            "& > fieldset": {
-                                borderRadius: "30px",
-                                borderColor: "White",
-                            },
-                        },
-                    }}
-                    variant="outlined"
-                    // value={note.content}
-                    inputProps={{
-                        maxLength: 65,
-                    }}
-                    onChange={(e) => {
-                        setUser((prevState) => ({
-                            ...prevState,
-                            password: e.target.value,
-                        }));
-                    }}
-                />
-                <TextField
-                    label="New Password"
-                    placeholder="Enter password"
-                    sx={{
-                        width: "100%",
-                        marginBottom: "20px",
-                        "& .MuiInputLabel-root": {
-                            color: "white",
-                        },
-                        "& .MuiOutlinedInput-root": {
-                            "& > fieldset": {
-                                borderRadius: "30px",
-                                borderColor: "White",
-                            },
-                        },
-                    }}
-                    variant="outlined"
-                    // value={note.content}
-                    inputProps={{
-                        maxLength: 65,
-                    }}
-                    onChange={(e) => {
-                        setUser((prevState) => ({
-                            ...prevState,
-                            password: e.target.value,
-                        }));
-                    }}
-                />
-                <TextField
-                    label="Confirm New Password"
-                    placeholder="Enter password"
-                    sx={{
-                        width: "100%",
-                        marginBottom: "20px",
-                        "& .MuiInputLabel-root": {
-                            color: "white",
-                        },
-                        "& .MuiOutlinedInput-root": {
-                            "& > fieldset": {
-                                borderRadius: "30px",
-                                borderColor: "White",
-                            },
-                        },
-                    }}
-                    variant="outlined"
-                    // value={note.content}
-                    inputProps={{
-                        maxLength: 65,
-                    }}
-                    onChange={(e) => {
-                        setUser((prevState) => ({
-                            ...prevState,
-                            password: e.target.value,
-                        }));
-                    }}
-                />
             </box>
 
             <div style={{ width: "70%", marginBottom: "10px" }}>
@@ -327,7 +150,7 @@ function Profile() {
                 <Button sx={buttonStyle}>Log out</Button>
             </div>
         </Box>
-        // </Modal>
+         </Modal>
     );
 }
 
@@ -402,12 +225,7 @@ const buttonStyle = {
         transition: "0.3s",
     },
 };
-<<<<<<< HEAD
-
-
 
 export default Profile;
 
-=======
-export default Profile;
->>>>>>> parent of e6781c7 (Merge branch 'main' into frontend)
+

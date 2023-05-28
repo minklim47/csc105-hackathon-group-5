@@ -4,15 +4,14 @@ const mysql = require("mysql2");
 const router = express.Router();
 
 module.exports = (connection) => {
-  router.patch('/:userId', (req, res) => {
-    const userId = req.params.userId;
-    const { username, email, password,} = req.body;
+  router.patch('/', (req, res) => {
+    const { username, email, password, profile_img} = req.body;
 
-    const sqlInsert = "UPDATE users SET username = ?, email = ?, hashed_password = ? WHERE id = ?";
+    const sqlInsert = "UPDATE users SET username = ?, email = ?, hashed_password = ?, profile_img = ?";
 
     connection.query(
       sqlInsert,
-      [username, email, password ,userId],
+      [username, email, password, profile_img],
       (err, result) => {
         if (err) {
           res.json({

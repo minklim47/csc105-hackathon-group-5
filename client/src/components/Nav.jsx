@@ -71,7 +71,7 @@ const navBarStyle = {
 
 const navButtonStyle = {
   textTransform: "none",
-  fontSize: 18,
+  fontSize: 28,
   backgroundColor: "white.main",
   color: "black.main",
   "&:hover": {

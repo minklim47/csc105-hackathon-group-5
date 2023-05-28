@@ -24,7 +24,7 @@ function Profile() {
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image.raw);
-
+ 
         await fetch("YOUR_URL", {
             method: "POST",
             headers: {

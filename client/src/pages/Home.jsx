@@ -163,28 +163,28 @@ const moonStyle = {
 };
 
 
-const createStyle = {
-  marginLeft: {
-    xs: '50px',
-    sm: '90px',
-    md: '150px',
-    lg: '150px',
-    xl: '300px',
-  },
-  color: "#fffff",
-  position: "absolute",
-  bottom: "50px",
-  width: {
-    xs: '200px',
-    sm: '300px',
-    md: '500px',
-  },
-  height: "80px",
-  bgcolor: "white",
-  fontSize: "20px",
-  fontWeight: "bold",
-  borderRadius: "35px",
-  background: "rgba(255, 255, 255, 0.5)",
+// const createStyle = {
+//   marginLeft: {
+//     xs: '50px',
+//     sm: '90px',
+//     md: '150px',
+//     lg: '150px',
+//     xl: '300px',
+//   },
+//   color: "#fffff",
+//   position: "absolute",
+//   bottom: "50px",
+//   width: {
+//     xs: '200px',
+//     sm: '300px',
+//     md: '500px',
+//   },
+//   height: "80px",
+//   bgcolor: "white",
+//   fontSize: "20px",
+//   fontWeight: "bold",
+//   borderRadius: "35px",
+//   background: "rgba(255, 255, 255, 0.5)",
   // sx: {
   //   // Responsive styles
   //   '@media (max-width: 600px)': {
@@ -200,7 +200,37 @@ const createStyle = {
   //     width: '770px',
   //   },
   // },
-};
+  const createStyle = {
+    marginLeft: {
+      xs: '50px',
+      sm: '90px',
+      md: '150px',
+      lg: '150px',
+      xl: '300px',
+    },
+    color: "#fffff",
+    position: "absolute",
+    bottom: "50px",
+    width: {
+      xs: '200px',
+      sm: '280px',
+      md: '300px',
+      lg: '450px'
+    },
+    height: "80px",
+    bgcolor: "white",
+    fontSize: "20px",
+    fontWeight: "bold",
+    borderRadius: "35px",
+    background: "rgba(255, 255, 255, 0.5)",
+    marginBottom: {
+      xs: '0px',
+      sm: '0',
+      md: '50px',
+    },
+  };
+  
+
 
 // const createStyle = {
 //   color: "#fffff",

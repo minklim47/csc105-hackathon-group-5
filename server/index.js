@@ -26,11 +26,7 @@ const port = 8000;
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-<<<<<<< Updated upstream
-app.use(cors({ origin: ["http://localhost:5173","http://localhost:5174","http://localhost:5175"], credentials: true }));
-=======
 app.use(cors({ origin: ["http://localhost:5173","http://localhost:5175","http://localhost:5174"], credentials: true }));
->>>>>>> Stashed changes
 
 app.get("/", (req, res) => {
     res.send("Hello World!!!");

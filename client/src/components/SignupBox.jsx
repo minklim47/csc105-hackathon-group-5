@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Modal, Typography, Button, TextField } from "@mui/material";
 import "../styles/modal.css";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Axios from "axios";
 
 const instance = Axios.create({
@@ -22,14 +22,16 @@ function Signup() {
     borderRadius: "5px",
   };
 
+  const navigate = useNavigate();
   const handleSubmit = () => {
     if (!validateForm()) {
       return;
     }
     instance
-      .post("http://localhost:8000/signup", [username,email,password])
+      .post("http://localhost:8000/signup", {username:username,email:email,password:password})
       .then((res) => {
         console.log(res);
+        navigate("/Home")
       })
       .catch((err) => {
         console.log(err);

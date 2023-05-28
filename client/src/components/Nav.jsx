@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 import { alpha } from "@mui/system";
 import Profile from "./profile";
 
-function Nav( {button}) {
+function Nav() {
 
   const [open, setOpen] = useState(false);
   const modalRef = useRef();
@@ -58,7 +58,7 @@ function Nav( {button}) {
             src={logo}
           />
         </Button>
-{button==""}
+
         <Button
           component={NavLink}
           // to={`/Profile/${userId}`}

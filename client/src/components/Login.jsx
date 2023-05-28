@@ -28,9 +28,11 @@ function Login() {
     instance
       .post("http://localhost:8000/login", {email:email, password:password})
       .then((res) => {
-        console.log(res.data.data.userId);
-        if (res.data.success == "true"){
-          navigate('/')
+        console.log(res.data);
+        if (res.data.success == true){
+               localStorage.setItem("logged_in", "1");
+          navigate('/home')
+     
         }
       })
       .catch((err) => {

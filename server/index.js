@@ -26,13 +26,17 @@ const port = 8000;
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors({ origin: ["http://localhost:5173","http://localhost:5175"], credentials: true }));
+<<<<<<< Updated upstream
+app.use(cors({ origin: ["http://localhost:5173","http://localhost:5174","http://localhost:5175"], credentials: true }));
+=======
+app.use(cors({ origin: ["http://localhost:5173","http://localhost:5175","http://localhost:5174"], credentials: true }));
+>>>>>>> Stashed changes
 
 app.get("/", (req, res) => {
     res.send("Hello World!!!");
 });
 
-const secretKey = 'NonthakornLovePhing';
+const secretKey = 'defrgthyjukiolp';
 
 
 const loginRoute = require('./routes/endpoint_login')(connection, secretKey);

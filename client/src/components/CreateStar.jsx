@@ -55,51 +55,7 @@ function CreateStar({ open, onClose }) {
       aria-describedby="modal-modal-description"
     >
       <Box className="modal" sx={modalStyle}>
-        <div style={{ marginBottom: "30px" }}>
-          <Stack direction={"row"}>
-            <Stack>
-              <img
-                src="../src/assets/star.png"
-                style={{ width: "50px", height: "50px", marginBottom: "10px" }}
-              ></img>
-              <label style={{ color: "#fffff", marginRight: "70px" }}>
-                support
-                <input
-                  type="radio"
-                  value="support"
-                  checked={star.type === "support"}
-                  onChange={(e) => {
-                    setStar((prevState) => ({
-                      ...prevState,
-                      type: e.target.value,
-                    }));
-                  }}
-                />
-              </label>
-            </Stack>
-            <Stack>
-              <img
-                src="../src/assets/star.png"
-                style={{ width: "50px", height: "50px", marginBottom: "10px" }}
-              ></img>
-              <label style={{ color: "#fffff" }}>
-                seek
-                <input
-                  type="radio"
-                  value="seek"
-                  checked={star.type === "seekt"}
-                  onChange={(e) => {
-                    setStar((prevState) => ({
-                      ...prevState,
-                      type: e.target.value,
-                    }));
-                  }}
-                />
-              </label>
-            </Stack>
-          </Stack>
-        </div>
-
+        
         <Box>
           <TextField
             className="modal-text"
@@ -156,7 +112,7 @@ function CreateStar({ open, onClose }) {
             }}
           />
         </Box>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button sx={buttonStyle} onClick={handleSubmit}>Submit</Button>
       </Box>
     </Modal>
   );
@@ -182,7 +138,7 @@ const modalStyle = {
 const buttonStyle = {
   textTransform: "none",
   borderRadius: "30px",
-  width: "100%",
+  width: "50%",
   textAlign: "center",
   color: "#ffffff",
   backgroundColor: "#38586B",

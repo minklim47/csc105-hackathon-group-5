@@ -3,192 +3,189 @@ import { Box, Button, Modal, Typography, TextField } from "@mui/material";
 import "../styles/modal.css";
 
 function Profile() {
+  return (
+    <Modal
+      open={true}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box className="modal" sx={modalStyle}>
+        <img
+          src={"../src/assets/astronaut.png"}
+          alt="dummy"
+          // width="300vw"
+          // height="300vw"
+          style={image}
+        />
+        <Typography sx={text1}>username: minklim</Typography>
+        <Typography sx={text2}>email: minklim47@gmail.com</Typography>
+        <Typography sx={text3}>Change password</Typography>
+        <Box>
+          <TextField
+            label="Old Password"
+            placeholder="Enter password"
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+              "& .MuiInputLabel-root": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderRadius: "30px",
+                  borderColor: "White",
+                },
+              },
+            }}
+            variant="outlined"
+            // value={note.content}
+            inputProps={{
+              maxLength: 65,
+            }}
+            onChange={(e) => {
+              setUser((prevState) => ({
+                ...prevState,
+                password: e.target.value,
+              }));
+            }}
+          />
+          <TextField
+            label="New Password"
+            placeholder="Enter password"
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+              "& .MuiInputLabel-root": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderRadius: "30px",
+                  borderColor: "White",
+                },
+              },
+            }}
+            variant="outlined"
+            // value={note.content}
+            inputProps={{
+              maxLength: 65,
+            }}
+            onChange={(e) => {
+              setUser((prevState) => ({
+                ...prevState,
+                password: e.target.value,
+              }));
+            }}
+          />
+          <TextField
+            label="Confirm New Password"
+            placeholder="Enter password"
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+              "& .MuiInputLabel-root": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderRadius: "30px",
+                  borderColor: "White",
+                },
+              },
+            }}
+            variant="outlined"
+            // value={note.content}
+            inputProps={{
+              maxLength: 65,
+            }}
+            onChange={(e) => {
+              setUser((prevState) => ({
+                ...prevState,
+                password: e.target.value,
+              }));
+            }}
+          />
+        </Box>
+      </Box>
 
-    // const [user, setUser] = useState({});
-    return (
-        <Modal
-            open={true}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-        >
-            <Box className="modal" sx={modalStyle}>
-                <img
-                    src={"../src/assets/astronaut.png"}
-                    alt="dummy"
-                    // width="300vw"
-                    // height="300vw"
-                    style={image}
-                />
-                <Typography sx={text1}>username: minklim</Typography>
-                <Typography sx={text2}>email: minklim47@gmail.com</Typography>
-                <Typography sx={text3}>Change password</Typography>
-                <box>
-                    <TextField
-                        label="Old Password"
-                        placeholder="Enter password"
-                        sx={{
-                            width: "100%",
-                            marginBottom: "20px",
-                            "& .MuiInputLabel-root": {
-                                color: "white",
-                            },
-                            "& .MuiOutlinedInput-root": {
-                                "& > fieldset": {
-                                    borderRadius: "30px",
-                                    borderColor: "White",
-                                },
-                            },
-                        }}
-                        variant="outlined"
-                        // value={note.content}
-                        inputProps={{
-                            maxLength: 65,
-                        }}
-                        onChange={(e) => {
-                            setUser((prevState) => ({
-                                ...prevState,
-                                password: e.target.value,
-                            }));
-                        }}
-                    />
-                    <TextField
-                        label="New Password"
-                        placeholder="Enter password"
-                        sx={{
-                            width: "100%",
-                            marginBottom: "20px",
-                            "& .MuiInputLabel-root": {
-                                color: "white",
-                            },
-                            "& .MuiOutlinedInput-root": {
-                                "& > fieldset": {
-                                    borderRadius: "30px",
-                                    borderColor: "White",
-                                },
-                            },
-                        }}
-                        variant="outlined"
-                        // value={note.content}
-                        inputProps={{
-                            maxLength: 65,
-                        }}
-                        onChange={(e) => {
-                            setUser((prevState) => ({
-                                ...prevState,
-                                password: e.target.value,
-                            }));
-                        }}
-                    />
-                    <TextField
-                        label="Confirm New Password"
-                        placeholder="Enter password"
-                        sx={{
-                            width: "100%",
-                            marginBottom: "20px",
-                            "& .MuiInputLabel-root": {
-                                color: "white",
-                            },
-                            "& .MuiOutlinedInput-root": {
-                                "& > fieldset": {
-                                    borderRadius: "30px",
-                                    borderColor: "White",
-                                },
-                            },
-                        }}
-                        variant="outlined"
-                        // value={note.content}
-                        inputProps={{
-                            maxLength: 65,
-                        }}
-                        onChange={(e) => {
-                            setUser((prevState) => ({
-                                ...prevState,
-                                password: e.target.value,
-                            }));
-                        }}
-                    />
-                </box>
-
-                <div style={{ width: "70%", marginBottom: "10px" }}>
-                    <Button sx={buttonStyle}>History</Button>
-                </div>
-                <div style={{ width: "70%", marginBottom: "10px" }}>
-                    <Button sx={buttonStyle}>Log out</Button>
-                </div>
-            </Box>
-        </Modal>
-    );
+      <div style={{ width: "70%", marginBottom: "10px" }}>
+        <Button sx={buttonStyle}>History</Button>
+      </div>
+      <div style={{ width: "70%", marginBottom: "10px" }}>
+        <Button sx={buttonStyle}>Log out</Button>
+      </div>
+    </Modal>
+  );
 }
 
 const text1 = {
-    marginTop: "12px",
-    marginBottom: "10px",
-    fontSize: "20px",
-    color: "#32A6EE",
+  marginTop: "12px",
+  marginBottom: "10px",
+  fontSize: "20px",
+  color: "#32A6EE",
 };
 const text2 = {
-    marginBottom: "12px",
-    fontSize: "20px",
-    color: "#32A6EE",
+  marginBottom: "12px",
+  fontSize: "20px",
+  color: "#32A6EE",
 };
 
 const text3 = {
-    marginBottom: "12px",
-    fontSize: "20px",
-    color: "white",
+  marginBottom: "12px",
+  fontSize: "20px",
+  color: "white",
 };
 
 const modalStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    maxWidth: "90%",
-    width: "500px",
-    borderRadius: "15px",
-    boxShadow: 24,
-    p: 4,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  maxWidth: "90%",
+  width: "500px",
+  borderRadius: "15px",
+  boxShadow: 24,
+  p: 4,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
 };
 const image = {
-    maxWidth: "300px",
-    maxHeight: "300px",
-    height: "50%",
-    width: "50%",
-
+  maxWidth: "300px",
+  maxHeight: "300px",
+  height: "50%",
+  width: "50%",
 };
 const buttonStyle = {
-    textTransform: "none",
-    borderRadius: "30px",
-    width: "100%",
-    height: "50px",
-    fontSize: "120%",
-    textAlign: "center",
-    color: "#ffffff",
-    backgroundColor: "#38586B",
-    "&:hover": {
-        backgroundColor: "white.main",
-        "&::after": {
-            width: "70%",
-        },
-    },
-    "&.active": {
-        "&::after": {
-            width: "70%",
-        },
-    },
-
+  textTransform: "none",
+  borderRadius: "30px",
+  width: "100%",
+  height: "50px",
+  fontSize: "120%",
+  textAlign: "center",
+  color: "#ffffff",
+  backgroundColor: "#38586B",
+  "&:hover": {
+    backgroundColor: "white.main",
     "&::after": {
-        content: '""',
-        position: "absolute",
-        bgcolor: "",
-        height: "3px",
-        width: "0",
-        bottom: "7px",
-        transition: "0.3s",
+      width: "70%",
     },
+  },
+  "&.active": {
+    "&::after": {
+      width: "70%",
+    },
+  },
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    bgcolor: "",
+    height: "3px",
+    width: "0",
+    bottom: "7px",
+    transition: "0.3s",
+  },
 };
 export default Profile;

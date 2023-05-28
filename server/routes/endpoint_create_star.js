@@ -12,7 +12,7 @@ module.exports = (connection) => {
       // If any required property is missing, return an error response
       return res.status(400).json({ error: 'Name, content, type, and user_id are required' });
     }
-    const sqlInsert = "INSERT INTO stars (name, content, type, user_id) VALUES (?, ?, ?,?)";
+    const sqlInsert = "INSERT INTO stars (name, content, type, user_id) VALUES (?, ?, ?, ?)";
     star.user_id = 1;
     connection.query(
       sqlInsert,

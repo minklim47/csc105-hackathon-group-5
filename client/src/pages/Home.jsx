@@ -78,6 +78,7 @@ function Home() {
     <div>
       <Nav />
       <img className="moon" style={moonStyle} src={moon} />
+
       {/* <Box sx={{ display: "flex", justifyContent: "center" }}> */}
         <Box sx={{ position:"relative",left:"0",paddingTop: "90px", width:"500px",marginLeft:{sx:"0",md:"100px"}}}>
 
@@ -151,7 +152,10 @@ function Home() {
               <Star />
             </div>
           ))} */}
+
         {/* </Box> */}
+        </Box>
+
       </Box>
 
       <Button sx={createStyle} onClick={handleOpenCreate}>

@@ -45,8 +45,9 @@ function Login() {
       <Typography sx={ loginstyle }>Login</Typography>
       <Box>
         <TextField
-          label="username"
-          placeholder="Enter username"
+          label="email"
+          placeholder="Enter email address"
+          type="email"
           sx={{
             width: "100%",
             marginBottom: "20px",
@@ -68,12 +69,13 @@ function Login() {
           onChange={(e) => {
             setUser((prevState) => ({
               ...prevState,
-              title: e.target.value,
+              email: e.target.value,
             }));
           }}
         />
         <TextField
           label="password"
+          type="password"
           placeholder="Enter password"
           sx={{
             width: "100%",
@@ -97,7 +99,7 @@ function Login() {
           onChange={(e) => {
             setUser((prevState) => ({
               ...prevState,
-              content: e.target.value,
+              password: e.target.value,
             }));
           }}
         />

@@ -6,7 +6,7 @@ const router = express.Router();
 module.exports = (connection) => {
   router.post('/', (req, res) => {
     // const { name, content, type, user_id, created_at } = req.body; // Assuming the request body contains 'name', 'content', 'type', 'user_id', and 'created_at' properties
-    const star = req.body;
+    const star = req.body.star;
     console.log(star)
     if (!star.name || !star.content || !star.type ) {
       // If any required property is missing, return an error response

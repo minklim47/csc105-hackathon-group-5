@@ -78,8 +78,8 @@ function Home() {
     <div>
       <Nav />
       <img className="moon" style={moonStyle} src={moon} />
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Box sx={{ position:"relative",paddingTop: "90px", width:"700px",marginLeft:{sx:"0",md:"0px"}}}>
+      {/* <Box sx={{ display: "flex", justifyContent: "center" }}> */}
+        <Box sx={{ position:"relative",left:"0",paddingTop: "90px", width:"500px",marginLeft:{sx:"0",md:"100px"}}}>
 
           <div
             id="star0"
@@ -151,7 +151,7 @@ function Home() {
               <Star />
             </div>
           ))} */}
-        </Box>
+        {/* </Box> */}
       </Box>
 
       <Button sx={createStyle} onClick={handleOpenCreate}>
@@ -178,7 +178,11 @@ const moonStyle = {
 };
 
 const createStyle = {
-  color: "#fffff",
+    textTransform: "none",
+  color: "white",
   position: "absolute",
   bottom: "0",
+  backgroundColor:"rgba(3, 21, 39, 0.8)",
+  marginLeft:"50px",
+  marginBottom:"20px"
 };

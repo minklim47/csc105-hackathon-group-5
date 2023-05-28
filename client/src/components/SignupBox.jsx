@@ -1,8 +1,6 @@
-
 import React, { useState } from "react";
 import { Box, Modal, Typography, Button, TextField } from "@mui/material";
-import "../styles/modal.css"
-
+import "../styles/modal.css";
 
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
@@ -12,188 +10,193 @@ const instance = Axios.create({
 });
 
 function Signup() {
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({})
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("")
+  const [password, setPassword ] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const inputStyle = {
-    // backgroundColor: "", // Set the desired background color
-    color: "white", // Set the desired text color
-    // borderColor:"white",
-    borderColor: "white", // Set the desired border color
-    borderWidth: "10px", // Set the desired border width if needed
+    color: "white",
+    borderColor: "white",
+    borderWidth: "10px",
     borderRadius: "5px",
   };
 
   const handleSubmit = () => {
-    if (!validateForm()){
-        console.log("must enter all fields");
-        return;
+    if (!validateForm()) {
+      return;
     }
-    instance.post("http://localhost:8000/signin", [user])
-    .then((res) => {console.log(res)}).catch((err) => {
-        console.log(err)
-    })
+    instance
+      .post("http://localhost:8000/signup", [username,email,password])
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const validateForm = () => {
-    if (user.username == "" || user.password == "") {
+    if (
+      username == "" ||
+      password == "" ||
+     confirmPassword == "" ||
+      email == ""
+    ) {
+      console.log("Please fill out all the forms.");
+      return false;
+    } else if (password != confirmPassword) {
+      console.log("Password and confirm password did not match.");
       return false;
     } else {
       return true;
     }
-  }; 
+  };
+  
   return (
-    // <Modal
-    //   open={true}
-    //   aria-labelledby="modal-modal-title"
-    //   aria-describedby="modal-modal-description"
-    // >
-    <Box className="modal" sx={modalStyle}>
-      <Typography sx={ signupstyle }>Sign up</Typography>
-      <Box>
-        <TextField
-          label="Username"
-          placeholder="Enter username"
-          sx={{
-            width: "100%",
-            marginBottom: "20px",
-            "& .MuiInputLabel-root": {
-              color: "white", 
-            },
-            "& .MuiOutlinedInput-root": {
-              "& > fieldset": {
-                borderRadius: "30px",
-                borderColor: "White",
+    <Modal
+      open={true}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box className="modal" sx={modalStyle}>
+        <Typography sx={signupstyle}>Sign up</Typography>
+        <Box>
+          <TextField
+            label="Username"
+            placeholder="Enter username"
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+              "& .MuiInputLabel-root": {
+                color: "white",
               },
-            },
-          }}
-          inputProps={{
-            maxLength: 65,
-            style: inputStyle,
-          }}
-          variant="outlined"
-          onChange={(e) => {
-            setUser((prevState) => ({
-              ...prevState,
-              username: e.target.value,
-            }));
-          }}
-        />
-         <TextField
-          label="Email"
-          placeholder="Enter password"
-          sx={{
-            width: "100%",
-            marginBottom: "20px",
-            "& .MuiInputLabel-root": {
-              color: "white", 
-            },
-            "& .MuiOutlinedInput-root": {
-              "& > fieldset": {
-                borderRadius: "30px",
-                borderColor: "White",
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderRadius: "30px",
+                  borderColor: "White",
+                },
               },
-            },
-          }}
-          variant="outlined"
-          // value={note.content}
-          inputProps={{
-            maxLength: 65,
-            style: inputStyle,
-          }}
-          onChange={(e) => {
-            setUser((prevState) => ({
-              ...prevState,
-              email: e.target.value,
-            }));
-          }}
-        />
-        <TextField
-          label="Password"
-          placeholder="Enter password"
-          sx={{
-            width: "100%",
-            marginBottom: "20px",
-            "& .MuiInputLabel-root": {
-              color: "white", 
-            },
-            "& .MuiOutlinedInput-root": {
-              "& > fieldset": {
-                borderRadius: "30px",
-                borderColor: "White",
+            }}
+            inputProps={{
+              maxLength: 65,
+              style: inputStyle,
+            }}
+            variant="outlined"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value)
+            }}
+          />
+          <TextField
+            label="Email"
+            type="email"
+            placeholder="Enter password"
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+              "& .MuiInputLabel-root": {
+                color: "white",
               },
-            },
-          }}
-          variant="outlined"
-          // value={note.content}
-          inputProps={{
-            maxLength: 65,
-            style: inputStyle,
-          }}
-          onChange={(e) => {
-            setUser((prevState) => ({
-              ...prevState,
-              password: e.target.value,
-            }));
-          }}
-        />
-         <TextField
-          label="Confirm password"
-          placeholder="Enter confirm password"
-          sx={{
-            width: "100%",
-            marginBottom: "20px",
-            "& .MuiInputLabel-root": {
-              color: "white", 
-            },
-            "& .MuiOutlinedInput-root": {
-              "& > fieldset": {
-                borderRadius: "30px",
-                borderColor: "White",
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderRadius: "30px",
+                  borderColor: "White",
+                },
               },
-            },
-          }}
-          variant="outlined"
-          // value={note.content}
-          inputProps={{
-            maxLength: 65,
-            style: inputStyle,
-          }}
-          onChange={(e) => {
-            setUser((prevState) => ({
-              ...prevState,
-              confirmPassword: e.target.value,
-            }));
-          }}
-        />
+            }}
+            variant="outlined"
+            // value={note.content}
+            inputProps={{
+              maxLength: 65,
+              style: inputStyle,
+            }}
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value)
+            }}
+          />
+          <TextField
+            label="Password"
+            placeholder="Enter password"
+            type="password"
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+              "& .MuiInputLabel-root": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderRadius: "30px",
+                  borderColor: "White",
+                },
+              },
+            }}
+            variant="outlined"
+  
+            inputProps={{
+              maxLength: 65,
+              style: inputStyle,
+            }}
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value)
+            }}
+          />
+          <TextField
+          type="password"
+            label="Confirm password"
+            placeholder="Enter confirm password"
+            sx={{
+              width: "100%",
+              marginBottom: "20px",
+              "& .MuiInputLabel-root": {
+                color: "white",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderRadius: "30px",
+                  borderColor: "White",
+                },
+              },
+            }}
+            variant="outlined"
+            inputProps={{
+              maxLength: 65,
+              style: inputStyle,
+            }}
+            value={confirmPassword}
+            onChange={(e) => {
+              setConfirmPassword(e.target.value)
+            }}
+          />
+        </Box>
 
-      </Box>
-
-      <div style={{ width: "70%",marginBottom: "20px" }}>
-        <Button
-          sx={buttonStyle}
-          onClick={handleSubmit}
+        <div style={{ width: "70%", marginBottom: "20px" }}>
+          <Button sx={buttonStyle} onClick={handleSubmit}>
+            Sign up
+          </Button>
+        </div>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
         >
-          Sign up
-        </Button>
-      </div>
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Typography sx={groupLogin}>
-          Already have an account?
-          <NavLink to="/SignIn"> Sign in</NavLink>
-        </Typography>
+          <Typography sx={groupLogin}>
+            Already have an account?
+            <a href="/login"> login</a>
+          </Typography>
+        </Box>
       </Box>
-    </Box>
-    // </Modal>
+    </Modal>
   );
 }
 
 const buttonStyle = {
   textTransform: "none",
-  borderRadius: "30px", 
+  borderRadius: "30px",
   width: "100%",
   textAlign: "center",
   color: "#ffffff",
@@ -220,7 +223,6 @@ const buttonStyle = {
     transition: "0.3s",
   },
 };
-
 
 // const header = {
 //   display: "flex",
@@ -254,8 +256,8 @@ const signupstyle = {
   fontWeight: "bold",
   fontSize: "40px",
   color: "#1871A8",
-  marginBottom: "20px"
-}
+  marginBottom: "20px",
+};
 
 // const groupInput = {
 //   display: "flex",

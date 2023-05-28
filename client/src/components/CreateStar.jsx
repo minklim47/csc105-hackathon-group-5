@@ -10,12 +10,14 @@ import {
 import React, { useState } from "react";
 import "../styles/modal.css";
 import Axios from "axios";
-
+// import Cookies from "js-cookie";
 const instance = Axios.create({
   withCredentials: true,
 });
+
 function CreateStar({ open, onClose }) {
   const [star, setStar] = useState({ type: "support" });
+  // const cookieValue = Cookies.get("userId");
 
   const inputStyle = {
     // backgroundColor: "", // Set the desired background color
@@ -27,26 +29,31 @@ function CreateStar({ open, onClose }) {
   };
 
   const handleSubmit = () => {
-    if (!formValidate){
+    if (!formValidate) {
       return;
     }
     console.log(star);
     instance
-      .post("http://localhost:8000/createstar", { star })
+      .post(
+        "http://localhost:8000/createstar",
+        { star },
+        // {
+        //   headers: { Authorization: `Bearer ${cookieValue}` },
+        // }
+      )
       .then((res) => {
         console.log(res);
-        onClose()
+        onClose();
       })
       .catch((err) => {
         console.log(err);
       });
-
   };
   const formValidate = () => {
-    if (!star.name || !star.content){
-      console.log("Please fill all forms")
+    if (!star.name || !star.content) {
+      console.log("Please fill all forms");
     }
-  }
+  };
   return (
     <Modal
       open={open}
@@ -55,7 +62,6 @@ function CreateStar({ open, onClose }) {
       aria-describedby="modal-modal-description"
     >
       <Box className="modal" sx={modalStyle}>
-        
         <Box>
           <TextField
             className="modal-text"
@@ -112,7 +118,9 @@ function CreateStar({ open, onClose }) {
             }}
           />
         </Box>
-        <Button sx={buttonStyle} onClick={handleSubmit}>Submit</Button>
+        <Button sx={buttonStyle} onClick={handleSubmit}>
+          Submit
+        </Button>
       </Box>
     </Modal>
   );

@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import "../styles/modal.css";
 const instance = Axios.create({
@@ -19,7 +19,7 @@ function Login() {
     borderWidth: "10px", // Set the desired border width if needed
     borderRadius: "5px",
   };
-
+  const navigate = useNavigate();
   const handleSubmit = () => {
     if (!validateForm()) {
       console.log("must enter all fields");
@@ -28,7 +28,12 @@ function Login() {
     instance
       .post("http://localhost:8000/login", {email:email, password:password})
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        if (res.data.success == true){
+               localStorage.setItem("logged_in", "1");
+          navigate('/home')
+     
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -118,9 +123,7 @@ function Login() {
           justifyContent: "space-between",
         }}
       >
-        <Typography>
-          <NavLink to="/ForgotPassword">Forgot password?</NavLink>
-        </Typography>
+        
         <Typography sx={groupSignup}>
           Don't have an account?
           <NavLink to="/SignUp"> Sign up</NavLink>

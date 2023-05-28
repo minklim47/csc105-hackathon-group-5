@@ -1,8 +1,74 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Modal, Typography, TextField } from "@mui/material";
 import "../styles/modal.css";
+import ast from "../assets/ast.png";
+import Axios from "axios";
+import Cookies from "js-cookie";
+const instance = Axios.create({
+  withCredentials: true,
+});
 
 function Profile() {
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  useEffect(() => {
+    const userToken = Cookies.get("user");
+    if (userToken !== undefined && userToken !== "undefined") {
+      instance
+        .get(`http://localhost:8000/user/${userId}`, {
+          headers: { Authorization: `Bearer ${userToken}` },
+        })
+        .then((res) => {
+          // console.log(res.data)
+          setUserData(res.data);
+          setName(res.data.name);
+          setEmail(res.data.email_address);
+          setLocation(res.data.location);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+  const handleSubmit = () => {
+    instance
+      .patch(
+        "http://localhost:8000/edituser",
+        { oldPassword: oldPassword, newPassword: newPassword },
+        {
+          headers: { Authorization: `Bearer ${userToken}` },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const validateForm = () => {
+    if (oldPassword == "" || newPassword == "" || confirmPassword == "") {
+      console.log("Please fill all the forms");
+    }
+  };
+
+  const handleDelete = () => {
+    instance
+    .delete(
+      "http://localhost:8000/deleteuser",
+      {
+        headers: { Authorization: `Bearer ${userToken}` },
+      }
+    )
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
   return (
     <Modal
       open={true}
@@ -11,14 +77,14 @@ function Profile() {
     >
       <Box className="modal" sx={modalStyle}>
         <img
-          src={"../src/assets/astronaut.png"}
+          src={ast}
           alt="dummy"
           // width="300vw"
           // height="300vw"
           style={image}
         />
-        <Typography sx={text1}>username: minklim</Typography>
-        <Typography sx={text2}>email: minklim47@gmail.com</Typography>
+        <Typography sx={text1}>username:</Typography>
+        <Typography sx={text2}>email:</Typography>
         <Typography sx={text3}>Change password</Typography>
         <Box>
           <TextField
@@ -106,14 +172,20 @@ function Profile() {
             }}
           />
         </Box>
+        <div style={{ width: "70%", marginBottom: "10px" }}>
+          <Button sx={buttonStyle} onClick={handleSubmit}>
+            Confirm
+          </Button>
+        </div>
+        <div style={{ width: "70%", marginBottom: "10px" }}>
+          <Button sx={buttonStyle} onClick={handleDelete}>
+            Delete Account
+          </Button>
+        </div>
+        <div style={{ width: "70%", marginBottom: "10px" }}>
+          <Button sx={buttonStyle}>Log out</Button>
+        </div>
       </Box>
-
-      <div style={{ width: "70%", marginBottom: "10px" }}>
-        <Button sx={buttonStyle}>History</Button>
-      </div>
-      <div style={{ width: "70%", marginBottom: "10px" }}>
-        <Button sx={buttonStyle}>Log out</Button>
-      </div>
     </Modal>
   );
 }
@@ -152,9 +224,10 @@ const modalStyle = {
   flexDirection: "column",
 };
 const image = {
-  maxWidth: "300px",
+  maxWidth: "400px",
+  minWidth: "100px",
   maxHeight: "300px",
-  height: "50%",
+  // height: "50%",
   width: "50%",
 };
 const buttonStyle = {

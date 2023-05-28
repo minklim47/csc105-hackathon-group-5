@@ -8,6 +8,7 @@ import { Box, Button, useMediaQuery } from "@mui/material";
 import ShowStar from "../components/ShowStar";
 import CreateStar from "../components/CreateStar";
 import Axios from "axios";
+import Cookies from "js-cookie";
 const instance = Axios.create({
   withCredentials: true,
 });
@@ -19,8 +20,16 @@ function Home() {
   const [stars, setStars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [starId, setStarId] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
+  function checkLogin() {
+    const userId = Cookies.get("userId"); // Retrieve the value of the cookie
+    if (userId) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }
   const handleClick = (starId) => {
     setStarId(starId);
     handleOpen();
@@ -36,9 +45,12 @@ function Home() {
     setOpen(false);
     setOpenCreate(false);
   };
-    // const handleClick = (starId) => {
+  // const handleClick = (starId) => {
 
-    // };
+  // };
+  useEffect(() => {
+    checkLogin();
+  }, []);
   useEffect(() => {
     fetchStar();
   }, []);
@@ -60,10 +72,11 @@ function Home() {
   }
   return (
     <div>
-      <Nav />
-      <img className="moon" style={moonStyle} src={moon} />
+      {/* <Nav {...isLoggedIn? button="signin" : button={"profile"}/> */}
+            <Nav/>
 
-      <Box
+      <img className="moon" style={moonStyle} src={moon} />
+      {/* <Box
         sx={{
           position: "relative",
           left: "0",
@@ -71,98 +84,98 @@ function Home() {
           width: "500px",
           marginLeft: { sx: "0", md: "100px" },
         }}
+      > */}
+      <div
+        id="star0"
+        style={{ display: stars[0] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[0].id);
+        }}
       >
-        <div
-          id="star0"
-          style={{ display: stars[0] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[0].id);
-          }}
-        >
-          <Star />
-        </div>
-        <div
-          id="star1"
-          style={{ display: stars[1] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[1].id);
-          }}
-        >
-          <Star />
-        </div>
-        <div
-          id="star2"
-          style={{ display: stars[2] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[2].id);
-          }}
-        >
-          <Star />
-        </div>
-        <div
-          id="star3"
-          style={{ display: stars[3] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[3].id);
-          }}
-        >
-          <Star />
-        </div>
-        <div
-          id="star4"
-          style={{ display: stars[4] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[4].id);
-          }}
-        >
-          <Star />
-        </div>
-        <div
-          id="star5"
-          style={{ display: stars[5] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[5].id);
-          }}
-        >
-          <Star />
-        </div>{" "}
-        <div
-          id="star6"
-          style={{ display: stars[6] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[6].id);
-          }}
-        >
-          <Star />
-        </div>{" "}
-        <div
-          id="star7"
-          style={{ display: stars[7] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[7].id);
-          }}
-        >
-          <Star />
-        </div>{" "}
-        <div
-          id="star8"
-          style={{ display: stars[8] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[8].id);
-          }}
-        >
-          <Star />
-        </div>{" "}
-        <div
-          id="star9"
-          style={{ display: stars[9] == null ? "none" : "" }}
-          onClick={() => {
-            handleClick(stars[9].id);
-          }}
-        >
-          <Star />
-        </div>
-        {/* {stars.map((star, index) => (
+        <Star />
+      </div>
+      <div
+        id="star1"
+        style={{ display: stars[1] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[1].id);
+        }}
+      >
+        <Star />
+      </div>
+      <div
+        id="star2"
+        style={{ display: stars[2] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[2].id);
+        }}
+      >
+        <Star />
+      </div>
+      <div
+        id="star3"
+        style={{ display: stars[3] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[3].id);
+        }}
+      >
+        <Star />
+      </div>
+      <div
+        id="star4"
+        style={{ display: stars[4] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[4].id);
+        }}
+      >
+        <Star />
+      </div>
+      <div
+        id="star5"
+        style={{ display: stars[5] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[5].id);
+        }}
+      >
+        <Star />
+      </div>{" "}
+      <div
+        id="star6"
+        style={{ display: stars[6] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[6].id);
+        }}
+      >
+        <Star />
+      </div>{" "}
+      <div
+        id="star7"
+        style={{ display: stars[7] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[7].id);
+        }}
+      >
+        <Star />
+      </div>{" "}
+      <div
+        id="star8"
+        style={{ display: stars[8] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[8].id);
+        }}
+      >
+        <Star />
+      </div>{" "}
+      <div
+        id="star9"
+        style={{ display: stars[9] == null ? "none" : "" }}
+        onClick={() => {
+          handleClick(stars[9].id);
+        }}
+      >
+        <Star />
+      </div>
+      {/* {stars.map((star, index) => (
             <div
               style={{
                 width: "40px",
@@ -177,16 +190,24 @@ function Home() {
               <Star />
             </div>
           ))} */}
-        {/* </Box> */}
-      </Box>
-
+      {/* </Box> */}
+      {/* </Box> */}
       <Box>
+        <h1
+          style={{
+            textAlign: "center",
+            margin: "120px 20px",
+            color: "#ffff",
+            right: "10%",
+            top: "50%",
+          }}
+        >
+          Click on the stars to see what's in there!
+        </h1>
 
-      <h1>Click on the stars to see what's in there!</h1>
-
-      <Button sx={createStyle} onClick={handleOpenCreate}>
-        Create a Star
-      </Button>
+        <Button sx={createStyle} onClick={handleOpenCreate}>
+          Create a Star
+        </Button>
       </Box>
       <ShowStar starId={starId} open={open} onClose={handleClose} />
       <CreateStar open={openCreate} onClose={handleClose} />
@@ -206,25 +227,24 @@ const moonStyle = {
   bottom: "-350px",
   // transform: translateX(-50%);
   zIndex: "10",
+  zIndex: "-100",
 };
 
-
 const createStyle = {
-
   marginLeft: {
-    xs: '50px',
-    sm: '90px',
-    md: '150px',
-    lg: '150px',
-    xl: '300px',
+    xs: "50px",
+    sm: "90px",
+    md: "150px",
+    lg: "150px",
+    xl: "300px",
   },
   color: "#fffff",
   position: "absolute",
   bottom: "50px",
   width: {
-    xs: '200px',
-    sm: '300px',
-    md: '500px',
+    xs: "200px",
+    sm: "300px",
+    md: "500px",
   },
   height: "80px",
   bgcolor: "white",
@@ -255,8 +275,4 @@ const createStyle = {
   backgroundColor: "rgba(3, 21, 39, 0.8)",
   marginLeft: "50px",
   marginBottom: "20px",
-
 };
-
-
-

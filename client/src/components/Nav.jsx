@@ -1,21 +1,35 @@
 import { AppBar, Box, Button, IconButton, Stack, Toolbar } from "@mui/material";
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { alpha } from "@mui/system";
 import Profile from "./profile";
 
 function Nav() {
+
   const [open, setOpen] = useState(false);
-  const handleClick = () => {
-    handleOpen();
+  const modalRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const handleOpen = (event) => {
+    event.stopPropagation();
+    setOpen(true);
   };
-  const handleOpen = () => {
-    setOpen(true)
-  }
-  const handleClose = () => {
-    setOpen(false)
-  }
+
+
   return (
     <AppBar
       position="static"
@@ -48,14 +62,13 @@ function Nav() {
         <Button
           component={NavLink}
           // to={`/Profile/${userId}`}
-          onClick={handleClick}
+          onClick={handleOpen}
           color="inherit"
           sx={navButtonStyle}
         >
           Profile
         </Button>
       </Toolbar>
-      {/* <Profile open={open} onClose={handleClose} /> */}
     </AppBar>
   );
 }

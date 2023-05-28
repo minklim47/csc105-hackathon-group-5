@@ -31,18 +31,20 @@ module.exports = (connection, secretKey) => {
             } else {
               if (!isMatch) {
                 console.log("Incorrect password.");
-                return res.sendStatus(401).json({
+                 res.sendStatus(401).json({
                   success: false,
                   message: "Incorrect password",
                 });
               } else {
-                const token = jwt.sign({ email: user.email }, secretKey, {
+                const token = jwt.sign({ userId: user.id }, secretKey, {
                   expiresIn: "1d",
                 });
                 res.cookie("token", token, { httpOnly: true });
-                 return res.sendStatus(200).json({
+                 res.json({
+
                   success: true,
                   message: "Login success",
+                  userId:user.id
                 });
               }
             }

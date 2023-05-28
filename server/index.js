@@ -41,10 +41,9 @@ const signupRoute = require('./routes/endpoint_signup')(connection);
 const alluserRoute = require('./routes/endpoint_user')(connection);
 const allstarRoute = require('./routes/endpoint_star')(connection);
 const createStarRoute = require('./routes/endpoint_create_star')(connection);
-const edituserRoute = require('./routes/endpoint_edit_user')(connection);
-// const deletestarRoute = require('./routes/endpoint_delete_star')(connection);
+const edituserRoute = require('./routes/endpoint_edit_user')(connection, secretKey);
+const deletestarRoute = require('./routes/endpoint_delete_star')(connection);
 const protectRoute = require('./routes/protected_route')(secretKey);
-
 
 app.use('/login', loginRoute);
 app.use('/logout', logoutRoute);
@@ -53,7 +52,7 @@ app.use('/user', alluserRoute);
 app.use('/star', allstarRoute);
 app.use('/createstar', createStarRoute);
 app.use('/edituser', edituserRoute);
-// app.use('/delete', deletestarRoute);
+app.use('/delete', deletestarRoute);
 app.use('/protect', protectRoute);
 
 app.listen(port, () => {

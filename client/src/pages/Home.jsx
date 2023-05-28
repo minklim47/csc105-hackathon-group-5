@@ -19,7 +19,7 @@ function Home() {
   const [stars, setStars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [starId, setStarId] = useState(null);
-  const [positions, setPositions] = useState([]);
+
 
   const handleClick = (starId) => {
     setStarId(starId);
@@ -62,7 +62,6 @@ function Home() {
     <div>
       <Nav />
       <img className="moon" style={moonStyle} src={moon} />
-      {/* <Box sx={{ display: "flex", justifyContent: "center" }}> */}
 
       <Box
         sx={{
@@ -259,9 +258,5 @@ const createStyle = {
 
 };
 
-// const createStyle = {
-//   color: "#fffff",
-//   position: "absolute",
-//   bottom: "0",
-// };
+
 

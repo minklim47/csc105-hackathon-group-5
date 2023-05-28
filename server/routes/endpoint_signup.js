@@ -7,56 +7,56 @@ const router = express.Router();
 module.exports = (connection) => {
   router.post("/", async (req, res) => {
     const { username, email, password } = req.body;
-
-    const sqlSelect = "SELECT * FROM users WHERE email = ?";
-    connection.query(sqlSelect, [email], async (err, results) => {
-      if (err) {
-        console.error("Error executing the SQL query: ", err);
-        return res.sendStatus(500);
-      }
-
-      if (results.length > 0) {
-        return res
-          .status(409)
-          .json({ error: "User with the given email already exists" });
-      }
-
-    if (!password) {
-      console.error("Error: Password is required");
-      return res.status(400).json({ error: "Password is required" });
-    }
-
-    const saltRounds = 10;
-    bcrypt.genSalt(saltRounds, (err, salt) => {
-      if (err) {
-        console.error("Error generating salt: ", err);
-        return res.sendStatus(500);
-      }
-      console.log(password)
-      bcrypt.hash(password, salt, (err, hashedPassword) => {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    connection.query(
+      "SELECT * FROM users WHERE username = ? or email = ?",
+      [username, email],
+      (err, results) => {
         if (err) {
-          console.error("Error hashing password: ", err);
-          return res.sendStatus(500);
-        }
-
-        const sqlInsert =
-          "INSERT INTO users (username, email, hashed_password) VALUES (?, ?, ?)";
-        connection.query(
-          sqlInsert,
-          [username, email, hashedPassword, ],
-          (err) => {
-            if (err) {
-              console.error("Error executing the SQL query: ", err);
-              return res.sendStatus(500);
-            }
-            res.sendStatus(200);
+          res.json({
+            success: false,
+            data: null,
+            error: err.message,
+          });
+        } else {
+          if (results.length > 0) {
+            return res.json({
+              success: false,
+              data: null,
+              message: "duplicate account",
+            });
+          } else {
+            const sqlInsert = `INSERT INTO users (username,email,hashed_password) VALUES (?,?,?)`;
+            connection.query(
+              sqlInsert,
+              [username, email, hashedPassword],
+              (err, results) => {
+                if (err) {
+                  res.json({
+                    success: false,
+                    data: null,
+                    error: err.message,
+                  });
+                  return connection.rollback(() => {
+                    console.error("Error inserting row:", err.stack);
+                    throw err;
+                  });
+                } else {
+                  if (results) {
+                    res.json({
+                      success: true,
+                      message: "register success",
+                      userId: results.insertId,
+                    });
+                  }
+                }
+              }
+            );
           }
-        );
-      });
-
-    });
- 
+        }
+      }
+    );
   });
 
   return router;
-}
+};

@@ -2,13 +2,15 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Axios from "axios";
-import "../styles/modal.css"
+import "../styles/modal.css";
 const instance = Axios.create({
   withCredentials: true,
 });
 
 function Login() {
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const inputStyle = {
     // backgroundColor: "", // Set the desired background color
     color: "white", // Set the desired text color
@@ -19,17 +21,21 @@ function Login() {
   };
 
   const handleSubmit = () => {
-    if (!validateForm()){
-        console.log("must enter all fields");
-        return;
+    if (!validateForm()) {
+      console.log("must enter all fields");
+      return;
     }
-    instance.post("http://localhost:8000/login", [user])
-    .then((res) => {console.log(res)}).catch((err) => {
-        console.log(err)
-    })
+    instance
+      .post("http://localhost:8000/login", {email:email, password:password})
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const validateForm = () => {
-    if (user.username == "" || user.password == "") {
+    if (email == "" || password == "") {
       return false;
     } else {
       return true;
@@ -42,7 +48,7 @@ function Login() {
     //   aria-describedby="modal-modal-description"
     // >
     <Box className="modal" sx={modalStyle}>
-      <Typography sx={ loginstyle }>Login</Typography>
+      <Typography sx={loginstyle}>Login</Typography>
       <Box>
         <TextField
           label="email"
@@ -52,7 +58,7 @@ function Login() {
             width: "100%",
             marginBottom: "20px",
             "& .MuiInputLabel-root": {
-              color: "white", 
+              color: "white",
             },
             "& .MuiOutlinedInput-root": {
               "& > fieldset": {
@@ -66,11 +72,9 @@ function Login() {
             style: inputStyle,
           }}
           variant="outlined"
+          value={email}
           onChange={(e) => {
-            setUser((prevState) => ({
-              ...prevState,
-              email: e.target.value,
-            }));
+            setEmail(e.target.value);
           }}
         />
         <TextField
@@ -81,7 +85,7 @@ function Login() {
             width: "100%",
             marginBottom: "20px",
             "& .MuiInputLabel-root": {
-              color: "white", 
+              color: "white",
             },
             "& .MuiOutlinedInput-root": {
               "& > fieldset": {
@@ -91,25 +95,19 @@ function Login() {
             },
           }}
           variant="outlined"
-          // value={note.content}
+          value={password}
           inputProps={{
             maxLength: 65,
             style: inputStyle,
           }}
           onChange={(e) => {
-            setUser((prevState) => ({
-              ...prevState,
-              password: e.target.value,
-            }));
+            setPassword(e.target.value);
           }}
         />
       </Box>
 
       <div style={{ width: "70%", marginBottom: "20px" }}>
-        <Button
-          sx={buttonStyle}
-          onClick={handleSubmit}
-        >
+        <Button sx={buttonStyle} onClick={handleSubmit}>
           Login
         </Button>
       </div>
@@ -136,17 +134,16 @@ function Login() {
 export default Login;
 
 const groupSignup = {
-   color: "#1871A8",
-}
-
+  color: "#1871A8",
+};
 
 const loginstyle = {
   display: "flex",
   fontWeight: "bold",
   fontSize: "40px",
   color: "#1871A8",
-  marginBottom: "20px"
-}
+  marginBottom: "20px",
+};
 
 const modalStyle = {
   position: "absolute",
@@ -167,7 +164,7 @@ const modalStyle = {
 
 const buttonStyle = {
   textTransform: "none",
-  borderRadius: "30px", 
+  borderRadius: "30px",
   width: "100%",
   textAlign: "center",
   color: "#ffffff",
@@ -193,5 +190,4 @@ const buttonStyle = {
     bottom: "7px",
     transition: "0.3s",
   },
-
-}
+};

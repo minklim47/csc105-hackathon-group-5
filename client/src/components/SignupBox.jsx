@@ -15,7 +15,7 @@ function Signup() {
   const [email, setEmail] = useState("")
   const [password, setPassword ] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  
+
   const inputStyle = {
     color: "white",
     borderColor: "white",
@@ -31,8 +31,10 @@ function Signup() {
     instance
       .post("http://localhost:8000/signup", {username:username,email:email,password:password})
       .then((res) => {
-        console.log(res);
-        navigate("/Home")
+        console.log(res.data);
+        if (res.data.data.success == true){
+          navigate("/Home")
+        }
       })
       .catch((err) => {
         console.log(err);

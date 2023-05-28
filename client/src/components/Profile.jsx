@@ -1,11 +1,42 @@
 import React, { useState } from "react";
-import { Box, Button, Modal, Typography, TextField } from "@mui/material";
+import {
+    Box,
+    Button,
+    Modal,
+    Typography,
+    TextField,
+} from "@mui/material";
 import "../styles/modal.css";
 
 function Profile() {
+    const [image, setImage] = useState({ preview: "", raw: "" });
 
-    // const [user, setUser] = useState({});
+    const handleChange = (e) => {
+        if (e.target.files.length) {
+            setImage({
+                preview: URL.createObjectURL(e.target.files[0]),
+                raw: e.target.files[0],
+            });
+        }
+    };
+
+    const handleUpload = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image.raw);
+
+        await fetch("YOUR_URL", {
+            method: "POST",
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            body: formData,
+        });
+    };
+
     return (
+
+        
         <Modal
             open={true}
             aria-labelledby="modal-modal-title"
@@ -15,14 +46,16 @@ function Profile() {
                 <img
                     src={"../src/assets/astronaut.png"}
                     alt="dummy"
+
                     // width="300vw"
                     // height="300vw"
                     style={image}
+
                 />
                 <Typography sx={text1}>username: minklim</Typography>
                 <Typography sx={text2}>email: minklim47@gmail.com</Typography>
                 <Typography sx={text3}>Change password</Typography>
-                <box>
+                <Box>
                     <TextField
                         label="Old Password"
                         placeholder="Enter password"
@@ -107,16 +140,18 @@ function Profile() {
                             }));
                         }}
                     />
-                </box>
+                </ฺBox>
 
-                <div style={{ width: "70%", marginBottom: "10px" }}>
-                    <Button sx={buttonStyle}>History</Button>
-                </div>
-                <div style={{ width: "70%", marginBottom: "10px" }}>
-                    <Button sx={buttonStyle}>Log out</Button>
-                </div>
             </Box>
-        </Modal>
+
+            <div style={{ width: "70%", marginBottom: "10px" }}>
+                <Button sx={buttonStyle}>History</Button>
+            </div>
+            <div style={{ width: "70%", marginBottom: "10px" }}>
+                <Button sx={buttonStyle}>Log out</Button>
+            </div>
+        </Box>
+         </Modal>
     );
 }
 
@@ -158,7 +193,6 @@ const image = {
     maxHeight: "300px",
     height: "50%",
     width: "50%",
-
 };
 const buttonStyle = {
     textTransform: "none",
@@ -191,4 +225,7 @@ const buttonStyle = {
         transition: "0.3s",
     },
 };
+
 export default Profile;
+
+

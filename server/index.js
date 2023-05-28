@@ -26,13 +26,17 @@ const port = 8000;
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors({ origin: ["http://localhost:5173","http://localhost:5175"], credentials: true }));
+<<<<<<< Updated upstream
+app.use(cors({ origin: ["http://localhost:5173","http://localhost:5174","http://localhost:5175"], credentials: true }));
+=======
+app.use(cors({ origin: ["http://localhost:5173","http://localhost:5175","http://localhost:5174"], credentials: true }));
+>>>>>>> Stashed changes
 
 app.get("/", (req, res) => {
     res.send("Hello World!!!");
 });
 
-const secretKey = 'NonthakornLovePhing';
+const secretKey = 'defrgthyjukiolp';
 
 
 const loginRoute = require('./routes/endpoint_login')(connection, secretKey);
@@ -42,7 +46,7 @@ const alluserRoute = require('./routes/endpoint_user')(connection);
 const allstarRoute = require('./routes/endpoint_star')(connection);
 const createStarRoute = require('./routes/endpoint_create_star')(connection);
 const edituserRoute = require('./routes/endpoint_edit_user')(connection);
-const deletestarRoute = require('./routes/endpoint_delete_star')(connection);
+// const deletestarRoute = require('./routes/endpoint_delete_star')(connection);
 const protectRoute = require('./routes/protected_route')(secretKey);
 
 
@@ -53,7 +57,7 @@ app.use('/user', alluserRoute);
 app.use('/star', allstarRoute);
 app.use('/createstar', createStarRoute);
 app.use('/edituser', edituserRoute);
-app.use('/delete', deletestarRoute);
+// app.use('/delete', deletestarRoute);
 app.use('/protect', protectRoute);
 
 app.listen(port, () => {

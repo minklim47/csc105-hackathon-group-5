@@ -36,9 +36,9 @@ function Home() {
     setOpen(false);
     setOpenCreate(false);
   };
-  //   const handleClick = (starId) => {
+    // const handleClick = (starId) => {
 
-  //   };
+    // };
   useEffect(() => {
     fetchStar();
   }, []);
@@ -54,22 +54,6 @@ function Home() {
         console.log(err);
       });
   };
-  useEffect(() => {
-    const generateRandomPositions = () => {
-      const randomPositions = [];
-
-      for (let i = 0; i < 10; i++) {
-        const randomTop = Math.floor(Math.random() * window.innerHeight);
-        const randomLeft = Math.floor(Math.random() * window.innerWidth);
-
-        randomPositions.push({ top: randomTop, left: randomLeft });
-      }
-
-      setPositions(randomPositions);
-    };
-
-    generateRandomPositions();
-  }, []);
 
   if (isLoading) {
     <div>Loading</div>;
@@ -196,10 +180,15 @@ function Home() {
           ))} */}
         {/* </Box> */}
       </Box>
+
+      <Box>
+
       <h1>Click on the stars to see what's in there!</h1>
+
       <Button sx={createStyle} onClick={handleOpenCreate}>
         Create a Star
       </Button>
+      </Box>
       <ShowStar starId={starId} open={open} onClose={handleClose} />
       <CreateStar open={openCreate} onClose={handleClose} />
     </div>
@@ -220,7 +209,46 @@ const moonStyle = {
   zIndex: "10",
 };
 
+
 const createStyle = {
+
+  marginLeft: {
+    xs: '50px',
+    sm: '90px',
+    md: '150px',
+    lg: '150px',
+    xl: '300px',
+  },
+  color: "#fffff",
+  position: "absolute",
+  bottom: "50px",
+  width: {
+    xs: '200px',
+    sm: '300px',
+    md: '500px',
+  },
+  height: "80px",
+  bgcolor: "white",
+  fontSize: "20px",
+  fontWeight: "bold",
+  borderRadius: "35px",
+  background: "rgba(255, 255, 255, 0.5)",
+  // sx: {
+  //   // Responsive styles
+  //   '@media (max-width: 600px)': {
+  //     marginLeft: '100px',
+  //     width: '180px',
+  //   },
+  //   '@media (min-width: 1200px)': {
+  //     marginLeft: '20px',
+  //     width: '670px',
+  //   },
+  //   '@media (min-width: 1539px)': {
+  //     marginLeft: '20px',
+  //     width: '770px',
+  //   },
+  // },
+
   textTransform: "none",
   color: "white",
   position: "absolute",
@@ -228,4 +256,12 @@ const createStyle = {
   backgroundColor: "rgba(3, 21, 39, 0.8)",
   marginLeft: "50px",
   marginBottom: "20px",
+
 };
+
+// const createStyle = {
+//   color: "#fffff",
+//   position: "absolute",
+//   bottom: "0",
+// };
+
